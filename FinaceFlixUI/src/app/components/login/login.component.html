@@ -1,0 +1,65 @@
+<app-header-login> </app-header-login>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+        <h1 class="text-center">Entrar</h1>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <form class="px-4 py-3" (ngSubmit)="onSubmit()">
+
+        <!--Email Input-->
+        <div class="mb-3">
+          <label for="exampleDropdownFormEmail1" class="form-label">Email</label>
+          <input #emailInput type="email" class="form-control" id="email" placeholder="financeflix@gmail.com"
+            [(ngModel)]="user.email" name="email" required>
+
+          <!--Password Input-->
+        </div>
+        <div class="mb-3">
+          <label for="exampleDropdownFormsenha1" class="form-label">Senha</label>
+          <input #senhaInput type="password" class="form-control" id="senha" placeholder="Senha"
+            [(ngModel)]="user.senha" name="senha" required>
+        </div>
+        <div class="mb-3">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="dropdownCheck" name="rememberMe">
+            <label class="form-check-label" for="dropdownCheck">
+              Lembre-se de mim
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <a href="#">Esqueci a senha </a>
+            <a><br></a>
+            <p href="#">Não tem uma conta? <a href="/create-account">Cadastre-se</a></p>
+          </div>
+        </div>
+
+        <!--Action Buttons-->
+        <div class="col d-flex justify-content-between">
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Entrar</button>
+          </div>
+
+        </div>
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+
+</body>
+

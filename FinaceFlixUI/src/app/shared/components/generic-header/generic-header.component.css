@@ -1,0 +1,39 @@
+
+
+body {
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  margin: 0;
+  background:#163387;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+}
+
+a:first-child {
+  margin-right: auto;
+}
+
+a:last-child {
+  margin-left: auto;
+}
+
+h1{
+  color:white;
+  margin: 0;
+}
+
+
+a {
+  margin-left: 30px;
+  margin-right: 30px;
+  color: white;
+  text-decoration: underline;
+}
+
+
+
+
+

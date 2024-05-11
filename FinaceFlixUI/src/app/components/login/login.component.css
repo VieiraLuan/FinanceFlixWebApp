@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  margin: 0;
+  background: linear-gradient(180deg, #143489 0%, #3A0A48 106.26%);
+
+}
+
+.container {
+  border: #1a062a 1px solid ;
+  width: 80%; /* Ajuste a largura do container conforme necessário */
+  max-width: 600px; /* Defina uma largura máxima se desejar */
+  background: #351051;
+}
+
+p{
+  color:white
+}
+
+h1{
+  color:white
+}
+
+label{
+  color:white
+}
+
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15vh;
+  margin: 0;
+}
+
+a{
+  color:#87BEFF
+}

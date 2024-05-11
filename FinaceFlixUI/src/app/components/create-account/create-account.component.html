@@ -1,0 +1,116 @@
+<app-generic-header></app-generic-header>
+
+<body>
+
+
+  <div class="row cards">
+
+    <label class="write-data">Escolha o perfil e informe os dados abaixo</label>
+
+
+    <div class="col-md-4">
+
+    </div>
+
+
+    <div class="col-md-4">
+      <!--Cards Tipo Perfil-->
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+
+              <p class="card-text"> </p>
+              <div class="mb-3 form-check">
+                <h6>
+                  <input type="radio" class="form-check-input" id="criador" name="tipo-conta"  value="criador"  [(ngModel)]="account.tipo">
+
+
+                  <label class="form-check-label card-title" for="exampleCheck1">Criador de conteúdo</label>
+                </h6>
+                <label>Criar cursos para ensinar alunos sobre determinados temas.</label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+
+          <div class="card">
+            <div class="card-body">
+
+              <p class="card-text"> </p>
+              <div class="mb-3 form-check">
+                <h6>
+                  <input type="radio" class="form-check-input" id="aluno" name="tipo-conta" value="aluno" [(ngModel)]="account.tipo">
+
+                  <label class="form-check-label card-title" for="exampleCheck1">Aluno</label>
+                </h6>
+                <label>Aprender com nossos cursos e criadores de conteúdo</label>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+
+    </div>
+
+  </div>
+
+  <!--filds do form-->
+  <div class="container">
+
+    <form class="px-4 py-3" (ngSubmit)="onSubmit()">
+
+      <!--Name Input-->
+      <div class="mb-3">
+
+        <input #nomeInput type="text" class="form-control" id="nome" placeholder="Nome" [(ngModel)]="account.nome"
+          name="nome" required>
+      </div>
+
+      <!--Email Input-->
+      <div class="mb-3">
+
+        <input #emailInput type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="account.email"
+          name="email" required>
+      </div>
+
+
+      <!--Password Input-->
+      <div class="mb-3">
+
+        <input #senhaInput type="password" class="form-control" id="senha" placeholder="Senha"
+          [(ngModel)]="account.senha" name="senha" required>
+
+      </div>
+
+      <!--Input for user´s photo-->
+
+      <div class="mb-3">
+        <label for="formFile" class="form-label" >Foto de perfil</label>
+        <input class="form-control" type="file" id="formFile" >
+      </div>
+
+
+
+      <!--Action Buttons-->
+      <div class="actions">
+
+        <button type="submit" class="btn btn-primary">Criar conta</button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</body>

@@ -1,0 +1,22 @@
+
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: #351051;
+
+
+}
+
+p{
+  color:white
+}
+
+.container {
+  border: 3px solid #000; /* Adicionei uma borda apenas para visualização */
+  width: 80%; /* Ajuste a largura do container conforme necessário */
+  max-width: 600px; /* Defina uma largura máxima se desejar */
+}
+
