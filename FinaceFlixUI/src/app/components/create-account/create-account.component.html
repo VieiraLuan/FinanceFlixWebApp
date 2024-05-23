@@ -2,51 +2,45 @@
 
 <body>
   <div class="wrapper">
-      <form action="">
-          <h1>Criar Conta</h1>
-          <div class="input-box">
-              <input type="text" placeholder="Nome" required>
-          </div>
-          <div class="input-box">
-              <input type="text" placeholder="Sobrenome" required>
-          </div>
-          <div class="input-box">
-              <input type="text" id="myInput" placeholder="Escolha um tipo de conta" onclick="toggleDropdown()">
-              <div id="myDropdown" class="dropdown">
-                  <a href="#" onclick="selectOption('Criador de Conteúdo'); return false;">Criador de conteúdo</a>
-                  <a href="#" onclick="selectOption('Aluno'); return false;">Aluno</a>
-              </div>
-          </div>
+    <form (ngSubmit)="createAccount()" [formGroup]="form">
+      <h1>Criar Conta</h1>
+      <br>
+
+      <!-- Foto -->
+      <div>
+        <label for="picture">Escolha uma foto para o perfil</label>
+        <input type="file" id="picture" name="picture" accept="image/*" formControlName="picture" (change)="onFileSelected($event)">
+      </div>
 
 
-          <button type="submit" class="continuar" onclick="window.location.href='CriarUsuario3.html'">Continuar</button>
+      <!-- Nome -->
+      <div class="input-box">
+        <input type="text" placeholder="Nome" formControlName="name">
+      </div>
+      <!-- Email -->
+      <div class="input-box">
+        <input type="email" placeholder="Email" formControlName="email">
+      </div>
+      <!-- Senhas -->
+      <div class="input-box">
+        <input id="passwordOne" name="passwordOne" type="password" placeholder="Senha" formControlName="passwordOne">
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Confirme a Senha" formControlName="passwordTwo">
+      </div>
 
-      </form>
+      <!-- Tipo-->
+      <div class="input-box">
+        <select class="roles" formControlName="role">
+          <option value="c">Criador de Conteúdo</option>
+          <option value="s">Aluno</option>
+        </select>
+      </div>
+
+      <button type="submit" class="standard-btn"> Criar Conta </button>
+
+    </form>
   </div>
-
-  <script>
-      function toggleDropdown() {
-          document.getElementById("myDropdown").classList.toggle("show");
-      }
-
-      function selectOption(option) {
-          document.getElementById("myInput").value = option;
-          document.getElementById("myDropdown").classList.remove("show");
-      }
-
-      // Close the dropdown if the user clicks outside of it
-      window.onclick = function(event) {
-          if (!event.target.matches('#myInput')) {
-              var dropdowns = document.getElementsByClassName("dropdown");
-              for (var i = 0; i < dropdowns.length; i++) {
-                  var openDropdown = dropdowns[i];
-                  if (openDropdown.classList.contains('show')) {
-                      openDropdown.classList.remove('show');
-                  }
-              }
-          }
-      }
-  </script>
 </body>
 
 <app-footer-login> </app-footer-login>

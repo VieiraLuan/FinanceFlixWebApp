@@ -10,7 +10,7 @@ position: fixed;
 height: auto;
 left: 30px;
 top: 5px;
-width: 150px;
+width: 100px;
 }
 
 
@@ -19,7 +19,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 120px;
+  padding: 20px 100px;
   background: transparent;
   display: flex;
   justify-content: space-between;

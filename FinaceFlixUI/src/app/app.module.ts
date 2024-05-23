@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +11,9 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
 import { FooterLoginComponent } from './components/footer-login/footer-login.component';
 import { GenericBackButtonComponent } from './shared/components/generic-back-button/generic-back-button.component';
 import { GenericHeaderComponent } from './shared/components/generic-header/generic-header.component';
+import { LoggingInterceptor } from './shared/interceptor';
+
+
 
 
 @NgModule({
@@ -25,12 +28,14 @@ import { GenericHeaderComponent } from './shared/components/generic-header/gener
     GenericHeaderComponent
   ],
   imports: [
+    ReactiveFormsModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:LoggingInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

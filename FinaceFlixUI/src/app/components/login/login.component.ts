@@ -1,7 +1,7 @@
-import { ValidatorService } from './../../services/validator/validator.service';
+
 import { AuthenticateService } from '../../services/authenticate/authenticate.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { LoginRequest } from 'src/app/models/LoginRequest';
+import { LoginRequest } from 'src/app/dtos/LoginRequest';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { phrases } from 'src/app/shared/phrases/phrases';
 
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticateService,
     private alertService: AlertService,
-    private validatorService: ValidatorService
+
   ) {}
 
   user: LoginRequest = new LoginRequest();
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         phrases.requiredFields
       );
       return false;
-    } else if (!this.validatorService.isEmail(this.user.email)) {
+    } else if (true) {
       this.emailInputElement.nativeElement.value = '';
       this.emailInputElement.nativeElement.focus();
       this.alertService.showWarningAlert(
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
     } else if (!this.user.email) {
       this.emailInputElement.nativeElement.focus();
       this.alertService.showWarningAlert(
-        phrases.writeEmail,
+        phrases.writeValidEmail,
         phrases.requiredField
       );
 

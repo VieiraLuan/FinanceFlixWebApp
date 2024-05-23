@@ -1,9 +1,10 @@
-import { ValidatorService } from './../../services/validator/validator.service';
 import { AlertService } from './../../services/alert/alert.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { UserAccount } from 'src/app/models/UserAccount';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { phrases } from 'src/app/shared/phrases/phrases';
 import { AuthenticateService } from 'src/app/services/authenticate/authenticate.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserAccount } from 'src/app/dtos/UserAccount';
+import { UtilsService } from 'src/app/shared/utils.service';
 
 @Component({
   selector: 'app-create-account',
@@ -13,53 +14,74 @@ import { AuthenticateService } from 'src/app/services/authenticate/authenticate.
 export class CreateAccountComponent implements OnInit {
   constructor(
     private alertService: AlertService,
-    private validatorService: ValidatorService,
-    private accountService: AuthenticateService /*Criar serviço de conta*/
+    private accountService: AuthenticateService,
+    private formBuilder: FormBuilder,
+    private utils: UtilsService
   ) {}
 
-  account: UserAccount = new UserAccount();
+  form!: FormGroup;
+  private pictureBase64!: string;
 
-  @ViewChild('nomeInput') nomeInputElement!: ElementRef;
-  @ViewChild('emailInput') emailInputElement!: ElementRef;
-  @ViewChild('senhaInput') senhaInputElement!: ElementRef;
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      picture: [null],
+      name: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      passwordOne: [null, Validators.required],
+      passwordTwo: [null, Validators.required],
+      role: [null, Validators.required],
+    });
+  }
 
-  ngOnInit(): void {}
+  private getPicture() {
+    return this.form.get('picture');
+  }
 
-  onSubmit() {
-    if (this.formValidator(this.account)) {
-
-      this.accountService.createAccount(this.account).subscribe((result) => {
-
-        this.alertService.showSuccessAlert(
-          phrases.accountCreatedSucess,
-          phrases.sucess
-        );
-
-      });
+  protected onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      this.utils
+        .convertToBase64(file)
+        .then((base64) => {
+          this.pictureBase64 = base64.replace('data:image/png;base64,', '');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   }
 
-  private formValidator(data: UserAccount): boolean {
-    if (!data.nome) {
-      this.nomeInputElement.nativeElement.focus();
+  private getName() {
+    return this.form.get('name');
+  }
+
+  private getEmail() {
+    return this.form.get('email');
+  }
+
+  private getPasswordOne() {
+    return this.form.get('passwordOne');
+  }
+
+  private getPasswordTwo() {
+    return this.form.get('passwordTwo');
+  }
+
+  private getRole() {
+    return this.form.get('role');
+  }
+
+  private validateFields(): boolean {
+    if (this.getName()!.invalid) {
       this.alertService.showWarningAlert(
-        phrases.writeName,
-        phrases.requiredField
+        phrases.writeValidName,
+        phrases.invalidName
       );
       return false;
     }
 
-    if (!data.email) {
-      this.emailInputElement.nativeElement.focus();
-      this.alertService.showWarningAlert(
-        phrases.writeEmail,
-        phrases.requiredField
-      );
-      return false;
-    }
-
-    if (!this.validatorService.isEmail(data.email)) {
-      this.emailInputElement.nativeElement.focus();
+    if (this.getEmail()!.invalid) {
       this.alertService.showWarningAlert(
         phrases.writeValidEmail,
         phrases.invalidEmail
@@ -67,29 +89,75 @@ export class CreateAccountComponent implements OnInit {
       return false;
     }
 
-    if (!data.senha) {
-      this.senhaInputElement.nativeElement.focus();
+    if (this.getPasswordOne()!.invalid) {
       this.alertService.showWarningAlert(
         phrases.writePassword,
-        phrases.requiredField
+        phrases.invalidPassword
       );
       return false;
     }
 
-    if (!data.tipo) {
+    if (this.getPasswordTwo()!.invalid) {
       this.alertService.showWarningAlert(
-        phrases.chooseType,
-        phrases.requiredField
+        phrases.writePassword,
+        phrases.invalidPassword
       );
       return false;
     }
 
-    /*
-    não ta chegando
-
-    fotoUrl!: string;
-    */
-
+    if (this.getRole()!.invalid) {
+      this.alertService.showWarningAlert(
+        phrases.chooseValidRole,
+        phrases.warning
+      );
+      return false;
+    }
+    if (this.getPasswordOne()?.value !== this.getPasswordTwo()?.value) {
+      this.alertService.showInfoAlert(
+        phrases.passwordMustMatch,
+        phrases.warning
+      );
+      return false;
+    }
     return true;
+  }
+
+  protected createAccount() {
+    if (this.validateFields() === false || this.form.invalid) {
+      return;
+    } else {
+
+      // console.log(this.pictureBase64);
+
+      const account: UserAccount = {
+        Nome: this.getName()!.value,
+        Email: this.getEmail()!.value,
+        Senha: this.getPasswordOne()!.value,
+        Tipo: this.getRole()!.value,
+        FotoBase64: this.pictureBase64,
+      };
+
+      this.pictureBase64 = '';
+
+      this.accountService.createAccount(account).subscribe({
+        next: (response) => {
+
+          console.log(response.responseBody);
+          this.alertService.showSuccessAlert(
+            'Conta criada com sucesso!',
+            'Sucesso!'
+          );
+        },
+        error: (error) => {
+          console.log(error);
+          this.alertService.showErrorAlert(
+            'A conta não foi criada com sucesso!',
+            'Erro!'
+          );
+        },
+      });
+
+      this.form.reset();
+    }
   }
 }

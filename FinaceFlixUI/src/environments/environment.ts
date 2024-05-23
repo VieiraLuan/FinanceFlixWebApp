@@ -6,23 +6,13 @@ export const environment = {
   production: false,
 
   //Current API URLs
-  loginApiUrl: `https://localhost:7168/api/v1/Usuario/login`,
+  // BaseUrl: `https://financeflix-dsv.azurewebsites.net/`,
+  BaseUrl: `https://localhost:7168/`,
 
-  //Deprecated API URLs
+  //Account service endpoints
+  LoginPath: `api/v1/Usuario/AddUser`, /*Alterar para o login*/
+  CreateAccountPath: `api/v1/Usuario/AddUser`
 
-  //Alert Phrase´s
-  sucess: 'Sucesso',
-  loginSucess: 'Login realizado com sucesso!',
-  loginFailed:'Falha ao realizar login!',
-  loginErrorEmailPasswordNull: 'Preencha o email e a senha!',
-  errorPhrase: 'Aconteceu um erro!',
-  requiredField: 'Campo obrigatório!',
-  requiredFields: 'Campos obrigatórios!',
-  invalidEmail: 'Email inválido!',
-  writeValidEmail: 'Digite um email válido!',
-  writePassword: 'Preencha a senha!',
-  writeEmail: 'Preencha o email!',
-  loginErrorContactSupport: 'Entre em contato com o suporte!',
 };
 
 /*
