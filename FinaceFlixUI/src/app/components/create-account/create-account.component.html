@@ -1,116 +1,67 @@
-<app-generic-header></app-generic-header>
+<app-header-login> </app-header-login>
 
 <body>
 
 
-  <div class="row cards">
 
-    <label class="write-data">Escolha o perfil e informe os dados abaixo</label>
-
-
-    <div class="col-md-4">
-
-    </div>
-
-
-    <div class="col-md-4">
-      <!--Cards Tipo Perfil-->
-      <div class="row">
-
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-
-              <p class="card-text"> </p>
-              <div class="mb-3 form-check">
-                <h6>
-                  <input type="radio" class="form-check-input" id="criador" name="tipo-conta"  value="criador"  [(ngModel)]="account.tipo">
-
-
-                  <label class="form-check-label card-title" for="exampleCheck1">Criador de conteúdo</label>
-                </h6>
-                <label>Criar cursos para ensinar alunos sobre determinados temas.</label>
-              </div>
-
-            </div>
+  <div class="wrapper">
+      <form action="">
+          <h1>Criar Conta</h1>
+          <div class="input-box">
+              <input type="text" placeholder="Nome" required>
           </div>
-        </div>
-
-        <div class="col-md-6">
-
-          <div class="card">
-            <div class="card-body">
-
-              <p class="card-text"> </p>
-              <div class="mb-3 form-check">
-                <h6>
-                  <input type="radio" class="form-check-input" id="aluno" name="tipo-conta" value="aluno" [(ngModel)]="account.tipo">
-
-                  <label class="form-check-label card-title" for="exampleCheck1">Aluno</label>
-                </h6>
-                <label>Aprender com nossos cursos e criadores de conteúdo!</label>
-
+          <div class="input-box">
+              <input type="text" placeholder="Sobrenome" required>
+          </div>
+          <div class="input-box">
+              <input type="text" id="myInput" placeholder="Escolha um tipo de conta" onclick="toggleDropdown()">
+              <div id="myDropdown" class="dropdown">
+                  <a href="#" onclick="selectOption('Criador de Conteúdo'); return false;">Criador de conteúdo</a>
+                  <a href="#" onclick="selectOption('Aluno'); return false;">Aluno</a>
               </div>
-
-            </div>
           </div>
 
-        </div>
-      </div>
-    </div>
 
-    <div class="col-md-4">
+          <button type="submit" class="continuar" onclick="window.location.href='CriarUsuario3.html'">Continuar</button>
 
-    </div>
-
+      </form>
   </div>
 
-  <!--filds do form-->
-  <div class="container">
+  <script>
+      function toggleDropdown() {
+          document.getElementById("myDropdown").classList.toggle("show");
+      }
 
-    <form class="px-4 py-3" (ngSubmit)="onSubmit()">
+      function selectOption(option) {
+          document.getElementById("myInput").value = option;
+          document.getElementById("myDropdown").classList.remove("show");
+      }
 
-      <!--Name Input-->
-      <div class="mb-3">
-
-        <input #nomeInput type="text" class="form-control" id="nome" placeholder="Nome" [(ngModel)]="account.nome"
-          name="nome" required>
-      </div>
-
-      <!--Email Input-->
-      <div class="mb-3">
-
-        <input #emailInput type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="account.email"
-          name="email" required>
-      </div>
-
-
-      <!--Password Input-->
-      <div class="mb-3">
-
-        <input #senhaInput type="password" class="form-control" id="senha" placeholder="Senha"
-          [(ngModel)]="account.senha" name="senha" required>
-
-      </div>
-
-      <!--Input for user´s photo-->
-
-      <div class="mb-3">
-        <label for="formFile" class="form-label" >Foto de perfil</label>
-        <input class="form-control" type="file" id="formFile" >
-      </div>
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+          if (!event.target.matches('#myInput')) {
+              var dropdowns = document.getElementsByClassName("dropdown");
+              for (var i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                      openDropdown.classList.remove('show');
+                  }
+              }
+          }
+      }
+  </script>
 
 
+  <footer>
+      <nav>
+          <a href="#central-de-ajuda" onclick="window.location.href='CentralDeAjuda.html'">Central de Ajuda</a>
+          <a href="#privacidade" onclick="window.location.href='Privacidade.html'">Privacidade</a>
+          <a href="#informacoes-coorporartivas" onclick="window.location.href='CoorpInfo.html'">Informações Coorporativas</a>
+          <a href="#perguntas-frequentes" onclick="window.location.href='PerguntasFrequentes.html'">Perguntas Frequentes</a>
+          <a href="#cookies" onclick="window.location.href='Cookies.html'">Cookies</a>
+          <a href="#termos-de-uso" onclick="window.location.href='TermosDeUso.html'">Termos de Uso</a>
+      </nav>
+  </footer>
 
-      <!--Action Buttons-->
-      <div class="actions">
-
-        <button type="submit" class="btn btn-primary">Criar conta</button>
-
-      </div>
-
-    </form>
-
-  </div>
 
 </body>

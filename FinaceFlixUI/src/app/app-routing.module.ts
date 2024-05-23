@@ -8,13 +8,11 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 const routes: Routes = [
 
 //Not Authenticated
-
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 {path:'login',component:LoginComponent,pathMatch:'full'},
 {path:'create-account',component:CreateAccountComponent,pathMatch:'full'},
 
 //Autheticated
-
 {path:'',component:HomeComponent,pathMatch:'full', canActivate: [AuthGuard]},
 {path:'home',component:HomeComponent,pathMatch:'full', canActivate: [AuthGuard]},
 
