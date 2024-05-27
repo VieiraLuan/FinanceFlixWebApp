@@ -5,6 +5,7 @@ import { AuthenticateService } from 'src/app/services/authenticate/authenticate.
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAccount } from 'src/app/dtos/UserAccount';
 import { UtilsService } from 'src/app/shared/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -16,7 +17,8 @@ export class CreateAccountComponent implements OnInit {
     private alertService: AlertService,
     private accountService: AuthenticateService,
     private formBuilder: FormBuilder,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private router: Router
   ) {}
 
   form!: FormGroup;
@@ -33,6 +35,10 @@ export class CreateAccountComponent implements OnInit {
     });
   }
 
+  private redirectToLogin() {
+    this.router.navigate(['login']);
+  }
+
   private getPicture() {
     return this.form.get('picture');
   }
@@ -44,7 +50,10 @@ export class CreateAccountComponent implements OnInit {
       this.utils
         .convertToBase64(file)
         .then((base64) => {
-          this.pictureBase64 = base64.replace('data:image/png;base64,', '');
+          this.pictureBase64 = base64.replace(
+            /^data:image\/[a-zA-Z]+;base64,/,
+            ''
+          );
         })
         .catch((error) => {
           console.error(error);
@@ -126,6 +135,7 @@ export class CreateAccountComponent implements OnInit {
     if (this.validateFields() === false || this.form.invalid) {
       return;
     } else {
+      this.alertService.showLoadingAlert('Criando conta...');
 
       // console.log(this.pictureBase64);
 
@@ -141,12 +151,17 @@ export class CreateAccountComponent implements OnInit {
 
       this.accountService.createAccount(account).subscribe({
         next: (response) => {
-
           console.log(response.responseBody);
+
           this.alertService.showSuccessAlert(
             'Conta criada com sucesso!',
             'Sucesso!'
           );
+
+          setTimeout(() => {
+            this.redirectToLogin();
+          }, 2000);
+
         },
         error: (error) => {
           console.log(error);

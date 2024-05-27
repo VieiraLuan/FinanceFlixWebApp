@@ -26,4 +26,15 @@ export class AlertService {
   public showInfoAlert(message: string, title: string) {
     this.showAlert(title, message, 'info');
   }
+
+  public showLoadingAlert(message: string) {
+    Swal.fire({
+      title: message,
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  }
 }
