@@ -1,7 +1,4 @@
-export class LoginRequest {
-
-  constructor() {}
-
-  email!: string;
-  senha!: string;
+export interface LoginRequest {
+  email: string;
+  senha: string;
 }

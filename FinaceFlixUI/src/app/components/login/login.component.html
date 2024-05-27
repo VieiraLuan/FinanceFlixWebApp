@@ -1,65 +1,39 @@
 <app-header-login> </app-header-login>
 
 <body>
+  <div class="wrapper">
+    <form (ngSubmit)="login()" [formGroup]="form">
 
-  <div class="container">
+      <!-- Título -->
+      <h1>Login</h1>
 
-    <div class="row">
-      <div class="col-md-12">
-        <br>
-        <h1 class="text-center">Entrar!</h1>
+      <!-- Email -->
+      <div class="input-box">
+        <input type="email" placeholder="Email" formControlName="email">
+        <i class='bx bx-user-circle' style='color:#87BEFF'></i>
       </div>
-    </div>
 
-    <div class="row">
+      <!-- Senha -->
+      <div class="input-box">
+        <input type="password" placeholder="Senha" required formControlName="password">
+        <i class='bx bxs-lock-open-alt' style='color:#87BEFF'></i>
+      </div>
 
-      <form class="px-4 py-3" (ngSubmit)="onSubmit()">
+      <!-- Lembrar senha -->
+      <div class="remember-forget">
+        <label><input type="checkbox" formControlName="remember"> Lembre-se de mim</label>
 
-        <!--Email Input-->
-        <div class="mb-3">
-          <label for="exampleDropdownFormEmail1" class="form-label">Email</label>
-          <input #emailInput type="email" class="form-control" id="email" placeholder="financeflix@gmail.com"
-            [(ngModel)]="user.email" name="email" required>
+        <!-- Atalho Esqueceu a senha -->
+        <a href="#">Esqueceu sua senha?</a>
+      </div>
 
-          <!--Password Input-->
-        </div>
-        <div class="mb-3">
-          <label for="exampleDropdownFormsenha1" class="form-label">Senha</label>
-          <input #senhaInput type="password" class="form-control" id="senha" placeholder="Senha"
-            [(ngModel)]="user.senha" name="senha" required>
-        </div>
-        <div class="mb-3">
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="dropdownCheck" name="rememberMe">
-            <label class="form-check-label" for="dropdownCheck">
-              Lembre-se de mim
-            </label>
-          </div>
-        </div>
+      <button type="submit" class="standard-btn"> Entrar </button>
 
-        <div class="row">
-          <div class="col-md-12">
-            <a href="#">Esqueci a senha </a>
-            <a><br></a>
-            <p>Não tem uma conta? <a href="/create-account">Cadastre-se</a></p>
-          </div>
-        </div>
+      <!-- Criar conta atalho formulário -->
+      <div class="criar-conta">
+        <a href="create-account">Criar uma conta</a>
+      </div>
 
-        <!--Action Buttons-->
-        <div class="col d-flex justify-content-between">
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-primary">Entrar</button>
-          </div>
-
-        </div>
-
-
-
-      </form>
-
-    </div>
+    </form>
   </div>
-
-
 </body>
-

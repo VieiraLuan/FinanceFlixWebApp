@@ -128,6 +128,7 @@ export class CreateAccountComponent implements OnInit {
       );
       return false;
     }
+
     return true;
   }
 

@@ -1,40 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
 body {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 90vh;
-  margin: 0;
-  background: linear-gradient(180deg, #143489 0%, #3A0A48 106.26%);
-
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(90deg, #143489, #3A0A48);
 }
 
-.container {
-  border: #1a062a 1px solid ;
-  width: 80%; /* Ajuste a largura do container conforme necessário */
-  max-width: 600px; /* Defina uma largura máxima se desejar */
-  background: #351051;
+
+.wrapper {
+  width: 420px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px 40px;
 }
 
-p{
-  color:white
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
 }
 
-h1{
-  color:white
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  margin: 30px 0;
 }
 
-label{
-  color:white
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 10px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
 }
 
-.footer{
+.input-box input::placeholder {
+  color: #fff;
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.wrapper .remember-forget {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 15vh;
-  margin: 0;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: -15px 0 15px;
 }
 
-a{
-  color:#87BEFF
+.remember-forget label input {
+  accent-color: #fff;
+  margin-right: 3px;
+}
+
+.remember-forget a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.remember-forget a:hover {
+  text-decoration: underline;
+}
+
+.wrapper .standard-btn{
+  width: 100%;
+  height: 45px;
+  background: #87BEFF;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.wrapper .criar-conta {
+  font-size: 14px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+
+.criar-conta a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.criar-conta a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.fazer-login, .criar-conta2 {
+  width: 100px;
+  height: 35px;
+  background: #87BEFF;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  margin-right: 10px;
+  margin-top: 10px;
 }
