@@ -13,6 +13,7 @@ import { GenericBackButtonComponent } from './shared/components/generic-back-but
 import { GenericHeaderComponent } from './shared/components/generic-header/generic-header.component';
 import { LoggingInterceptor } from './shared/interceptor';
 import { HeaderCreateAccountComponent } from './components/header-create-account/header-create-account.component';
+import { HeaderAuthenticatedComponent } from './components/header-authenticated/header-authenticated.component';
 
 
 
@@ -27,7 +28,8 @@ import { HeaderCreateAccountComponent } from './components/header-create-account
     FooterLoginComponent,
     GenericBackButtonComponent,
     GenericHeaderComponent,
-    HeaderCreateAccountComponent
+    HeaderCreateAccountComponent,
+    HeaderAuthenticatedComponent
   ],
   imports: [
     ReactiveFormsModule,
