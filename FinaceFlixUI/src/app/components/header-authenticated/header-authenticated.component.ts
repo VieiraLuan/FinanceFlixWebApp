@@ -13,8 +13,13 @@ export class HeaderAuthenticatedComponent implements OnInit {
   }
 
 
-  find() {
+  protected find() {
     console.log('find');
+  }
+
+  protected logoff(){
+    window.localStorage.removeItem('token');
+    window.location.href = '/login';
   }
 
 }

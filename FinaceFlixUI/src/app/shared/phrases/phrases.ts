@@ -5,12 +5,12 @@ export const phrases = {
   warning: 'Atenção',
   sucess: 'Sucesso',
 
-   //Alert specific titles
-   loginSucess: 'Login realizado com sucesso',
-   accountCreatedSucess: 'Conta criada com sucesso',
-   loginFailed: 'Falha ao realizar login',
-   invalidEmail: 'Email inválido',
-   invalidPassword: 'Senha inválida',
+  //Alert specific titles
+  loginSucess: 'Login realizado com sucesso',
+  accountCreatedSucess: 'Conta criada com sucesso',
+  loginFailed: 'Falha ao realizar login',
+  invalidEmail: 'Email inválido',
+  invalidPassword: 'Senha inválida',
 
   //Alert generic phrases
   loginErrorEmailPasswordNull: 'Preencha o email e a senha',
@@ -26,4 +26,5 @@ export const phrases = {
   invalidName: 'Nome inválido',
   writeValidName: 'Informe um nome válido',
   chooseValidRole: 'Escolha um tipo de conta',
+  searching: 'Pesquisando...',
 };

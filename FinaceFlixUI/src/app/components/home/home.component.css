@@ -6,44 +6,95 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
-  background: linear-gradient(90deg, #143489, #3A0A48);
+  background: linear-gradient(90deg, #143489, #3a0a48);
 }
 
-.container {
-  position: fixed;
-  top: 125px;
-  left: 25vh;
-  width: 100%;
-  padding: 0px 100px;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
+.content-fluid {
+  justify-content: center;
+  padding-top: 7%;
 }
 
-.standard-btn
-{
-  width: 100px;
-  height: 35px;
-  background: #87beff;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.title-item {
+  position: relative;
+  margin-right: 10px;
   cursor: pointer;
-  font-size: 16px;
+}
+.title-item:hover .items {
+  opacity: 1;
+}
+.title-item img {
+  width: 100%;
+}
+.title-item .items {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   color: #fff;
-  font-weight: 600;
+  height: 100%;
+  padding: 10px;
+  background: -prefix-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.7)
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.7)
+  );
+  display: flex;
+  align-items: flex-end;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0;
+}
+.title-item h2 {
+  color: #fff;
+  font-size: 20px;
+  margin: 5px auto;
+}
+
+
+.title-item ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.title-item ul li {
   margin-right: 10px;
 }
 
-.search-btn
-{
+
+.video-qtn {
+  font-weight: bold;
+}
+
+.course-categories {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.image-item {
+  width: 250px;
+  height: 250px;
+}
+
+.course-items {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.course-grid {
+  padding: 30px;
+}
+
+.search-btn {
   width: 100px;
   height: 35px;
   background: #87beff;
@@ -58,24 +109,21 @@ body {
   margin-left: 10px;
 }
 
-
 .search-box input {
-  width: 500px;
+  width: 90vw;
   height: 35px;
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, .2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   font-size: 16px;
   color: #fff;
   padding: 20px 45px 20px 20px;
 }
 
-
-p{
-  color: white;
-  font-size: 20px;
-  font-weight: 200;
-  margin-right: 10px;
+.search-box {
+  padding-left: 2%;
 }
+
+

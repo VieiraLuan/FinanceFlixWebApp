@@ -2,45 +2,50 @@
 
 <body>
 
-<div class="container">
+  <div class="content-fluid">
 
-  <div class="navbar">
-    <p> Exibir por </p>
-    <button type="button" class="standard-btn" (click)=find()> Categorias </button>
-    <button type="button" class="standard-btn" (click)=find()> Em Alta </button>
-    <button type="button" class="standard-btn" (click)=find()> Sua Lista </button>
-  </div>
+    <!-- Barra de pesquisa -->
+    <form [formGroup]="form">
+      <div class="search-box">
+        <input type="text" placeholder="Pesquisar" class="input-box" formControlName="search">
+        <button type="button" class="search-btn" (click)="find()"> Pesquisar </button>
+      </div>
+    </form>
 
 
-  <!-- Barra de pesquisa -->
-  <div class="navbar">
+    <!-- Course Grid -->
+    <div class="course-grid">
 
-    <div class="search-box">
-      <input type="text" placeholder="Pesquisar" class="input-box" formControlName="search-text">
+      <!-- Category Name -->
+      <h2 class="course-categories">Adicionados recentemente</h2>
+
+      <!-- Category Items -->
+      <div class="course-items">
+
+        <li *ngFor="let item of cursos">
+          <!-- Course -->
+          <div class="title-item" routerLink="/videoList">
+            <img class="image-item" src="assets/img/logo-financeFlix150x150.png" alt="Curso">
+            <div class="items">
+              <div class="left-side">
+                <h2>Nome do Curso</h2>
+                <ul class="infos">
+                  <li class="video-qtn"> 3 Videos </li>
+                </ul>
+                <ul>
+                  <li>{{item.nome}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </div>
+
     </div>
 
-    <button type="button" class="search-btn" (click)=find()> Pesquisar </button>
-
   </div>
-
-</div>
-
-  <div class="containersliders">
-    <label for="s1" id="slide1">
-      <div class="card">
-        <div class="imagem">
-          <img src="assets/img/config.png" alt="aaaa">
-        </div>
-        <div class="infos">
-          <span class="name">Lorem</span>
-          <span class="lorem">Lorem ipsum lorem ipsum dolor</span>
-
-          <a href="" class="btn-detalhes">Detalhes</a>
-        </div>
-      </div>
-    </label>
-  </div>
-
-
 
 </body>
+
+<app-footer-login> </app-footer-login>
