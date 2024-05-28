@@ -1,0 +1,46 @@
+<app-header-authenticated> </app-header-authenticated>
+
+<body>
+
+<div class="container">
+
+  <div class="navbar">
+    <p> Exibir por </p>
+    <button type="button" class="standard-btn" (click)=find()> Categorias </button>
+    <button type="button" class="standard-btn" (click)=find()> Em Alta </button>
+    <button type="button" class="standard-btn" (click)=find()> Sua Lista </button>
+  </div>
+
+
+  <!-- Barra de pesquisa -->
+  <div class="navbar">
+
+    <div class="search-box">
+      <input type="text" placeholder="Pesquisar" class="input-box" formControlName="search-text">
+    </div>
+
+    <button type="button" class="search-btn" (click)=find()> Pesquisar </button>
+
+  </div>
+
+</div>
+
+  <div class="containersliders">
+    <label for="s1" id="slide1">
+      <div class="card">
+        <div class="imagem">
+          <img src="assets/img/config.png" alt="aaaa">
+        </div>
+        <div class="infos">
+          <span class="name">Lorem</span>
+          <span class="lorem">Lorem ipsum lorem ipsum dolor</span>
+
+          <a href="" class="btn-detalhes">Detalhes</a>
+        </div>
+      </div>
+    </label>
+  </div>
+
+
+
+</body>

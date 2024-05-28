@@ -12,4 +12,9 @@ export class HeaderAuthenticatedComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  find() {
+    console.log('find');
+  }
+
 }
