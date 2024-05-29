@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit {
     { id: 4, nome: 'Vue' },
     { id: 5, nome: 'Python' },
     { id: 6, nome: 'C#' },
+    { id: 7, nome: 'Node' },
+    { id: 8, nome: 'Ionic' },
+    { id: 9, nome: 'Flutter' },
+    { id: 10, nome: 'Dart' },
   ];
 
   ngOnInit(): void {

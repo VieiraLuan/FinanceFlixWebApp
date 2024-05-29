@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { CategoryComponent } from './components/category/category.component';
 
 const routes: Routes = [
 
@@ -15,6 +16,7 @@ const routes: Routes = [
 //Autheticated
 {path:'',component:HomeComponent,pathMatch:'full', canActivate: [AuthGuard]},
 {path:'home',component:HomeComponent,pathMatch:'full', canActivate: [AuthGuard]},
+{path:'categories',component:CategoryComponent,pathMatch:'full', canActivate: [AuthGuard]},
 
 ];
 

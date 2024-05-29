@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-generic-header',
@@ -11,5 +11,7 @@ export class GenericHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  @Input() title?: string;
 
 }
