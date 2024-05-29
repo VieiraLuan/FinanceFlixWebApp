@@ -54,3 +54,11 @@ header {
   font-weight: 600;
   margin-right: auto;
 }
+
+
+h1{
+  color: #fff;
+  font-size: 40px;
+  margin-top: 5px;
+  margin-left: 15px;
+}

@@ -1,1 +1,40 @@
-<p>videos works!</p>
+<app-generic-header [title]="title"> </app-generic-header>
+
+<div class="container">
+
+  <div class="sub-container">
+    <div class="toolbar">
+      <button type="button" class="add-btn" (click)="addVideo()"> Adicionar </button>
+      <button type="button" class="edit-btn" (click)="editVideo()"> Editar </button>
+      <button type="button" class="delete-btn" (click)="deleteVideo()"> Excluir </button>
+    </div>
+
+    <div class="list-data">
+      <table>
+        <tr>
+          <th>
+            <input type="checkbox" class="checkbox">
+          </th>
+          <th class="th-id" hidden>ID</th>
+          <th class="th-name">Nome</th>
+          <th class="th-desc">Descrição</th>
+          <th class="th-duration">Duração</th>
+          <th class="th-course">Curso</th>
+
+        </tr>
+
+        <tr *ngFor="let item of videos">
+          <td><input type="checkbox" class="checkbox"></td>
+          <td hidden>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.desc}}</td>
+          <td>{{item.duration + (' Minutos')}}</td>
+          <td>{{item.course}}</td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-footer-login> </app-footer-login>

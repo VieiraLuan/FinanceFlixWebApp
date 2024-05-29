@@ -1,1 +1,37 @@
-<p>courses works!</p>
+<app-generic-header [title]="title"> </app-generic-header>
+
+<div class="container">
+
+  <div class="sub-container">
+    <div class="toolbar">
+      <button type="button" class="add-btn" (click)="addCourse()"> Adicionar </button>
+      <button type="button" class="edit-btn" (click)="editCourse()"> Editar </button>
+      <button type="button" class="delete-btn" (click)="deleteCourse()"> Excluir </button>
+    </div>
+
+    <div class="list-data">
+      <table>
+        <tr>
+          <th>
+            <input type="checkbox" class="checkbox">
+          </th>
+          <th class="th-id" hidden>ID</th>
+          <th class="th-name">Nome</th>
+          <th class="th-desc">Descrição</th>
+          <th class="th-category">Categoria</th>
+        </tr>
+
+        <tr *ngFor="let item of courses">
+          <td><input type="checkbox" class="checkbox"></td>
+          <td hidden>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.desc}}</td>
+          <td>{{item.category}}</td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-footer-login> </app-footer-login>
