@@ -1,18 +1,22 @@
 <header>
-  <div>
-    <a href="/home"> <img src="assets/img/Logo.png" class="logo" alt="Logo"> </a>
+  <div class="container">
+
+
+    <div>
+      <img src="assets/img/Logo.png" class="logo" alt="Logo" routerLink="/home">
+    </div>
+
+    <nav>
+      <button type="button" class="standard-btn" routerLink="/categories"> Categorias </button>
+      <button type="button" class="standard-btn" routerLink="/courses"> Cursos </button>
+      <button type="button" class="standard-btn" routerLink="/videos"> Videos </button>
+      <button type="button" class="standard-btn" routerLink="/certificates"> Certificados </button>
+    </nav>
+
+    <nav>
+      <button class="standard-btn" (click)="logoff()"> Sair </button>
+    </nav>
+
   </div>
-
-
-  <nav class="navbar">
-    <button type="button" class="standard-btn" routerLink="/categories"> Categorias </button>
-    <button type="button" class="standard-btn" routerLink="/courses"> Cursos </button>
-    <button type="button" class="standard-btn" routerLink="/videos"> Videos </button>
-    <button type="button" class="standard-btn" routerLink="/certificates"> Certificados </button>
-  </nav>
-
-  <nav class="navbar">
-    <button class="standard-btn" (click)="logoff()"> Sair </button>
-  </nav>
 
 </header>

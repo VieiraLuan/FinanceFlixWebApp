@@ -6,12 +6,11 @@
 }
 
 header {
-  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(90deg, #143489, #3a0a48);
-  min-width: 100vw;
+  min-width: 100%;
 }
 
 .logo {
@@ -24,7 +23,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 100vw;
+  min-width: 100%;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
   padding-left: 7%;
   padding-right: 7%;
@@ -58,4 +57,8 @@ button:last-child {
   color: #fff;
   font-weight: 600;
   margin-right: 50px;
+}
+
+img{
+  cursor: pointer;
 }

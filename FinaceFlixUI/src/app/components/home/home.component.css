@@ -5,15 +5,65 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  min-height: 100vh;
+.body {
   background: linear-gradient(90deg, #143489, #3a0a48);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
 
 }
 
-.content-fluid {
+.search-box {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  display: flex;
   justify-content: center;
-  padding-top: 7%;
+  align-items: center;
+}
+
+.search-box input {
+  margin-right: 1%;
+  width: 90%;
+  height: 35px;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+}
+
+.search-box button {
+  width: 10%;
+  height: 35px;
+  background: #87beff;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.course-categories {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.course-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
 }
 
 .title-item {
@@ -35,16 +85,19 @@ body {
   color: #fff;
   height: 100%;
   padding: 10px;
+
   background: -prefix-linear-gradient(
     top,
     rgba(0, 0, 0, 0.1),
     rgba(0, 0, 0, 0.7)
   );
+
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.1),
     rgba(0, 0, 0, 0.7)
   );
+
   display: flex;
   align-items: flex-end;
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -55,7 +108,6 @@ body {
   font-size: 20px;
   margin: 5px auto;
 }
-
 
 .title-item ul {
   display: flex;
@@ -69,15 +121,8 @@ body {
   margin-right: 10px;
 }
 
-
 .video-qtn {
   font-weight: bold;
-}
-
-.course-categories {
-  color: #fff;
-  font-size: 24px;
-  margin-bottom: 10px;
 }
 
 .image-item {
@@ -90,41 +135,3 @@ body {
   flex-wrap: wrap;
   overflow: hidden;
 }
-
-.course-grid {
-  padding: 30px;
-}
-
-.search-btn {
-  width: 100px;
-  height: 35px;
-  background: #87beff;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  font-size: 16px;
-  color: #fff;
-  font-weight: 600;
-  margin-left: 10px;
-}
-
-.search-box input {
-  width: 90vw;
-  height: 35px;
-  background: transparent;
-  border: none;
-  outline: none;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  font-size: 16px;
-  color: #fff;
-  padding: 20px 45px 20px 20px;
-}
-
-.search-box {
-  padding-left: 2%;
-}
-
-

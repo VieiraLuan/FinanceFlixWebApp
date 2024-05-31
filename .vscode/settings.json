@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/54194500-00df-4230-8aae-4d6c685c72dd/resourceGroups/atividadeFiap/providers/Microsoft.Web/sites/financeflix",
+    "appService.deploySubpath": "FinaceFlixUI\\dist"
+}

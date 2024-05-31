@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header-authenticated',
   templateUrl: './header-authenticated.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderAuthenticatedComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit(): void {
+
   }
 
 
@@ -18,8 +21,14 @@ export class HeaderAuthenticatedComponent implements OnInit {
   }
 
   protected logoff(){
-    window.localStorage.removeItem('token');
-    window.location.href = '/login';
+    window.localStorage.clear();
+    this.router.navigate(['/login']);
   }
+
+  protected redirectToHome(){
+    this.router.navigate(['/home']);
+  }
+
+
 
 }

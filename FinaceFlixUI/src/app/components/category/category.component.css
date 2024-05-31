@@ -5,37 +5,41 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .container {
-  justify-content: center;
-  align-items: center;
+  min-width: 100%;
   min-height: 100vh;
-  min-width: 100vw;
-  background: linear-gradient(90deg, #143489, #3A0A48);
-  padding-top: 7%;
+  background: linear-gradient(90deg, #143489, #3a0a48);
+
 }
 
-.sub-container{
-  justify-content: center;
-  align-items: center;
-  margin-left: 15%;
-  margin-right: 15%;
-
-  padding-bottom: 10%;
-  padding-top: 2% ;
-  box-shadow: 1px 15px 10px  rgba(0, 0, 0, 0.4);
-}
-
-
-.toolbar{
+.sub-container {
   display: flex;
   justify-content: start;
   align-items: center;
-  margin-left: 7%;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.4);
 }
 
-.add-btn
-{
+.toolbar {
+  justify-content: start;
+  align-items: center;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 2%;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+  padding: 1%;
+}
+
+.toolbar-buttons {
+  justify-content: start;
+  align-items: center;
+}
+
+.add-btn {
   width: 100px;
   height: 35px;
   background: #87beff;
@@ -47,11 +51,10 @@
   font-size: 16px;
   color: #fff;
   font-weight: 600;
-  margin-right: 50px;
+  margin-right: 5px;
 }
 
-.edit-btn
-{
+.edit-btn {
   width: 100px;
   height: 35px;
   background: #cbb525;
@@ -63,11 +66,10 @@
   font-size: 16px;
   color: #fff;
   font-weight: 600;
-  margin-right: 50px;
+  margin-right: 5px;
 }
 
-.delete-btn
-{
+.delete-btn {
   width: 100px;
   height: 35px;
   background: red;
@@ -81,23 +83,22 @@
   font-weight: 600;
 }
 
-.list-data{
+.list-data {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-table{
+table {
   color: white;
-  margin-top: 2%;
   border: 1px solid white;
 }
 
-tr{
+tr {
   border: 1px solid white;
 }
 
-th{
+th {
   padding: 1%;
   text-align: center;
   border: 1px solid white;
@@ -105,17 +106,19 @@ th{
   font-weight: bold;
 }
 
-td{
+td {
   padding: 10px;
   text-align: center;
   border: 1px solid white;
   text-transform: capitalize;
 }
 
-.th-name{
-  min-width: 27vw;
+.th-name {
+  min-width: 30vw;
+  max-width: 30vw;
 }
 
-.th-desc{
-  min-width: 31vw;
+.th-desc {
+  min-width: 35vw;
+  max-width: 35vw;
 }

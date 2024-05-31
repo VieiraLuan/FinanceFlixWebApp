@@ -5,77 +5,39 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0px 100px;
-  background: transparent;
   display: flex;
-  justify-content: space-between;
+  background: linear-gradient(90deg, #143489, #3a0a48);
+  justify-content: center;
   align-items: center;
-  z-index: 100;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+.container {
+  display: flex;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  min-width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background: transparent;
+}
 
 .logo {
-  height: auto;
-  left: 30px;
-  top: 5px;
+  height: 100px;
   width: 100px;
+  cursor: pointer;
 }
 
-
-
-
-.standard-btn
-{
+.standard-btn {
   width: 100px;
   height: 35px;
-  background: #87beff;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  font-size: 16px;
-  color: #fff;
-  font-weight: 600;
   margin-right: 50px;
-}
-
-.search-btn
-{
-  width: 100px;
-  height: 35px;
+  margin-bottom: 5px;
   background: #87beff;
   border: none;
-  outline: none;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  outline: none;
   cursor: pointer;
   font-size: 16px;
   color: #fff;
   font-weight: 600;
-  margin-left: 10px;
-
 }
-
-
-
-.search-box input {
-  width: 500px;
-  height: 35px;
-  background: transparent;
-  border: none;
-  outline: none;
-  border: 2px solid rgba(255, 255, 255, .2);
-  border-radius: 10px;
-  font-size: 16px;
-  color: #fff;
-  padding: 20px 45px 20px 20px;
-}
-

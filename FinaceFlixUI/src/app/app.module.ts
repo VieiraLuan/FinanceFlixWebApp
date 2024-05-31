@@ -18,8 +18,8 @@ import { CategoryComponent } from './components/category/category.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { VideosComponent } from './components/videos/videos.component';
 import { CertificatesComponent } from './components/certificates/certificates.component';
-
-
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
 
 
 @NgModule({
@@ -37,7 +37,9 @@ import { CertificatesComponent } from './components/certificates/certificates.co
     CategoryComponent,
     CoursesComponent,
     VideosComponent,
-    CertificatesComponent
+    CertificatesComponent,
+    AddCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     ReactiveFormsModule,

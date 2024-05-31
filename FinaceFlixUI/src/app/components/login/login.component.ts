@@ -1,3 +1,4 @@
+import { UserResponse } from './../../dtos/UserResponse';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticateService } from '../../services/authenticate/authenticate.service';
 import { Component, OnInit } from '@angular/core';
@@ -75,12 +76,15 @@ export class LoginComponent implements OnInit {
         email: this.getEmail()!.value,
         senha: this.getPassword()!.value,
       };
-
       // console.log(credentials);
 
       this.authenticationService.login(credentials).subscribe({
         next: (response) => {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('userName', response.nome);
+          localStorage.setItem('userEmail', response.email);
+          localStorage.setItem('userType', response.tipo);
+
           this.alertService.showSuccessAlert(
             phrases.loginSucess,
             phrases.sucess

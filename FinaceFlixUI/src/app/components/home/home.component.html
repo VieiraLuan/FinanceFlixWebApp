@@ -1,23 +1,21 @@
 <app-header-authenticated> </app-header-authenticated>
 
-<body>
+<div class="body">
 
-  <div class="content-fluid">
-
+  <div class="container">
     <!-- Barra de pesquisa -->
-    <form [formGroup]="form">
-      <div class="search-box">
-        <input type="text" placeholder="Pesquisar" class="input-box" formControlName="search">
-        <button type="button" class="search-btn" (click)="find()"> Pesquisar </button>
-      </div>
+    <form class="search-box" [formGroup]="form">
+      <input type="text" placeholder="Pesquisar" formControlName="search">
+
+      <button type="button" (click)="find()"> Pesquisar </button>
     </form>
 
 
+    <!-- Category Name -->
+    <h2 class="course-categories">Adicionados recentemente</h2>
+
     <!-- Course Grid -->
     <div class="course-grid">
-
-      <!-- Category Name -->
-      <h2 class="course-categories">Adicionados recentemente</h2>
 
       <!-- Category Items -->
       <div class="course-items">
@@ -44,8 +42,10 @@
 
     </div>
 
+
+
   </div>
 
-</body>
+</div>
 
 <app-footer-login> </app-footer-login>
