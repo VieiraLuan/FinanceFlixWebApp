@@ -90,8 +90,9 @@ export class LoginComponent implements OnInit {
             phrases.sucess
           );
           setTimeout(() => {
+            this.alertService.closeAlert();
             this.redirectToMainMenu();
-          }, 2000);
+          }, 1000);
         },
         error: (error) => {
           if (error.error.message != null) {

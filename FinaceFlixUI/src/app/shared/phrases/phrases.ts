@@ -4,6 +4,9 @@ export const phrases = {
   info: 'Informação',
   warning: 'Atenção',
   sucess: 'Sucesso',
+  selectAtLeastOne: 'Selecione ao menos um item',
+  yes: 'Sim',
+  no: 'Não',
 
   //Alert specific titles
   loginSucess: 'Login realizado com sucesso',
@@ -11,6 +14,9 @@ export const phrases = {
   loginFailed: 'Falha ao realizar login',
   invalidEmail: 'Email inválido',
   invalidPassword: 'Senha inválida',
+  categoryAdded: 'Categoria adicionada',
+
+  categoryAddedSuccess: 'Categoria adicionada com sucesso',
 
   //Alert generic phrases
   loginErrorEmailPasswordNull: 'Preencha o email e a senha',
@@ -24,7 +30,11 @@ export const phrases = {
   writePassword: 'Informe uma senha válida',
   passwordMustMatch: 'As senhas devem ser iguais',
   invalidName: 'Nome inválido',
+  invalidDesc: 'Descrição inválida',
+  writeValidDesc: 'Informe uma descrição válida',
   writeValidName: 'Informe um nome válido',
   chooseValidRole: 'Escolha um tipo de conta',
   searching: 'Pesquisando...',
+  confirmDeleteCategory: 'Deseja realmente excluir a categoria?',
+  categoryDeleted: 'Categoria excluída com sucesso',
 };

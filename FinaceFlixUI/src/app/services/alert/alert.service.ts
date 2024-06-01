@@ -37,4 +37,31 @@ export class AlertService {
       },
     });
   }
+
+  public closeAlert() {
+    Swal.close();
+  }
+
+  public showConfirmAlert(
+    title: string,
+    message: string,
+    confirmButtonText: string,
+    cancelButtonText: string,
+    confirmCallback: () => void
+  ) {
+    Swal.fire({
+      title: title,
+      text: message,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: confirmButtonText,
+      cancelButtonText: cancelButtonText,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        confirmCallback();
+      }
+    });
+  }
 }

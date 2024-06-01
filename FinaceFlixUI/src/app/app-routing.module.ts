@@ -26,7 +26,8 @@ const routes: Routes = [
 //Category
 {path:'categories',component:CategoryComponent,pathMatch:'full', canActivate: [AuthGuard]},
 {path:'category/add',component:AddCategoryComponent,pathMatch:'full', canActivate: [AuthGuard]},
-{path:'category/edit',component:EditCategoryComponent,pathMatch:'full', canActivate: [AuthGuard]},
+{path:'category/edit/:id',component:EditCategoryComponent,pathMatch:'full', canActivate: [AuthGuard]},
+
 
 //Course
 {path:'courses',component:CoursesComponent,pathMatch:'full', canActivate: [AuthGuard]},

@@ -15,6 +15,7 @@ export class AuthenticateService {
   private baseUrl = environment.BaseUrl;
 
   public login(user: LoginRequest): Observable<{ nome:string, tipo:string,email:string, token:string }> {
+    
     const loginPath = this.baseUrl + environment.LoginPath;
 
     return this.http

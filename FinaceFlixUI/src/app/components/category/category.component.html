@@ -16,8 +16,8 @@
     <div class="list-data">
       <table>
         <tr>
-          <th>
-            <input type="checkbox" class="checkbox">
+          <th class="th-checkbox">
+            <input type="checkbox" class="checkbox" (change)="selectAll()">
           </th>
           <th class="th-id" hidden>ID</th>
           <th class="th-name">Nome</th>
@@ -25,10 +25,10 @@
         </tr>
 
         <tr *ngFor="let item of categories">
-          <td><input type="checkbox" class="checkbox"></td>
+          <td class="td-checkbox"><input type="checkbox" class="checkbox" (change)="select(item.id)"></td>
           <td hidden>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.desc}}</td>
+          <td class="td-name">{{item.name}}</td>
+          <td class="td-desc">{{item.desc}}</td>
         </tr>
 
       </table>

@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, enableProdMode } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { Category } from 'src/app/dtos/Category';
+import { CategoryRequest } from 'src/app/dtos/CategoryRequest';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import { CategoryService } from 'src/app/services/category/category.service';
+import { phrases } from 'src/app/shared/phrases/phrases';
 
 @Component({
   selector: 'app-category',
@@ -9,7 +13,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
-  constructor(private formGroup: FormBuilder, private router:Router) {}
+  constructor(
+    private formGroup: FormBuilder,
+    private router: Router,
+    private categoryService: CategoryService,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.title = 'Categorias';
@@ -20,17 +29,35 @@ export class CategoryComponent implements OnInit {
 
   form!: FormGroup;
 
-  categories = [{ id: 0, name: 'Vazio', desc: 'Vazio' }];
+  categories: Category[] = [];
+
+  selectedIds: string[] = [];
 
   private retriveCatogories() {
-    this.categories = [
-      { id: 1, name: 'Angular', desc: 'Angular description' },
-      { id: 2, name: 'Java', desc: 'Java description' },
-      { id: 1, name: 'Angular', desc: 'Angular description' },
-      { id: 2, name: 'Java', desc: 'Java description' },
+    const category: CategoryRequest = {
+      nome: '',
+      descricao: '',
+      dono: this.getOwner(),
+    };
 
-    ];
-    console.log('Retriving categories');
+    this.categoryService.retrieveCategories(category).subscribe({
+      next: (response) => {
+        response.forEach((element) => {
+          var category: Category = {
+            id: element.id,
+            name: element.nome,
+            desc: element.descricao,
+            owner: this.getOwner(),
+          };
+
+          this.categories.push(category);
+        });
+      },
+
+      error: (error: any) => {
+        console.error('Error retrieving categories', error);
+      },
+    });
   }
 
   protected addCategory() {
@@ -38,10 +65,68 @@ export class CategoryComponent implements OnInit {
   }
 
   protected editCategory() {
-    this.router.navigate(['/category/edit']);
+    if (this.selectedIds.length === 0) {
+      this.alertService.showWarningAlert(
+        phrases.selectAtLeastOne,
+        phrases.warning
+      );
+      return;
+    }
+
+    this.router.navigate(['/category/edit/', this.selectedIds[0]]);
+    this.selectedIds = [];
   }
 
   protected deleteCategory() {
-    console.log('Category deleted');
+    if (this.selectedIds.length === 0) {
+      this.alertService.showWarningAlert(
+        phrases.selectAtLeastOne,
+        phrases.warning
+      );
+      return;
+    } else {
+      this.alertService.showConfirmAlert(
+        phrases.warning,
+        phrases.confirmDeleteCategory,
+        phrases.yes,
+        phrases.no,
+        () => {
+          this.selectedIds.forEach((id) => {
+            this.categoryService.deleteCategory(id).subscribe({
+              next: (response) => {
+                console.log('category deleted' + id);
+              },
+              error: (error: any) => {
+                console.error('Error deleting category', error);
+              },
+            });
+          });
+
+          this.selectedIds = [];
+
+          this.alertService.showSuccessAlert(
+            phrases.categoryDeleted,
+            phrases.sucess
+          );
+
+          window.location.reload();
+          this.alertService.closeAlert();
+        }
+      );
+
+     
+    }
+  }
+
+  private getOwner(): string {
+    return window.localStorage.getItem('userEmail') || '';
+  }
+
+  protected selectAll() {
+    console.log('Select all');
+  }
+
+  protected select(id: string) {
+    this.selectedIds.push(id);
   }
 }
