@@ -12,5 +12,6 @@ export const environment = {
   AddCategoryPath: `api/v1/Categoria`,
   GetCategoriesByOwner: `api/v1/Categoria/GetByEmail`,
   DeleteCategoryById: `api/v1/Categoria/`,
-  
+  GetCategoryById: `api/v1/Categoria/`,
+  UpdateCategoryPath: `api/v1/Categoria/`,
 };

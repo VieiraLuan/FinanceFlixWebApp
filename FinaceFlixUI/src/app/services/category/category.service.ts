@@ -56,29 +56,58 @@ export class CategoryService {
       );
   }
 
-  public updateCategory(){
+  public updateCategory(
+    category: CategoryRequest
+  ): Observable<CategoryResponse> {
+    const updateCategoryPath = this.baseUrl + environment.UpdateCategoryPath;
 
+    return this.http
+      .put<CategoryResponse>(updateCategoryPath, category, {
+        headers: this.headers,
+        observe: 'response',
+      })
+      .pipe(
+        map((response: HttpResponse<CategoryResponse>) => {
+          return response.body || { id: '', nome: '', descricao: '', dono: '' };
+        })
+      );
   }
 
-  public deleteCategory(id : string):Observable<CategoryResponse>{
+  public deleteCategory(id: string): Observable<CategoryResponse> {
+    const deleteCategoryPath =
+      this.baseUrl + environment.DeleteCategoryById + id;
 
-    const deleteCategoryPath = this.baseUrl + environment.DeleteCategoryById + id;
-
-    return this.http.delete<CategoryResponse>(deleteCategoryPath, {
-      headers: this.headers,
-      observe: 'response',
-    }).pipe(
-      map((response: HttpResponse<CategoryResponse>) => {
-        return response.body || {id: '', nome: '', descricao: '', dono: ''};
+    return this.http
+      .delete<CategoryResponse>(deleteCategoryPath, {
+        headers: this.headers,
+        observe: 'response',
       })
-    );
+      .pipe(
+        map((response: HttpResponse<CategoryResponse>) => {
+          return response.body || { id: '', nome: '', descricao: '', dono: '' };
+        })
+      );
+  }
 
+  public retrieveCategoryById(id: string): Observable<CategoryResponse> {
+    const retrieveCategoryPath =
+      this.baseUrl + environment.GetCategoryById + id;
+
+    return this.http
+      .get<CategoryResponse>(retrieveCategoryPath, {
+        headers: this.headers,
+        observe: 'response',
+      })
+      .pipe(
+        map((response: HttpResponse<CategoryResponse>) => {
+          return response.body || { id: '', nome: '', descricao: '', dono: '' };
+        })
+      );
   }
 
   public retrieveCategories(
     category: CategoryRequest
   ): Observable<CategoryResponse[]> {
-    
     const retrieveCategoriesPath =
       this.baseUrl + environment.GetCategoriesByOwner;
 
@@ -89,7 +118,6 @@ export class CategoryService {
       })
       .pipe(
         map((response: HttpResponse<CategoryResponse[]>) => {
-          console.log(response.body);
           return response.body || [];
         })
       );

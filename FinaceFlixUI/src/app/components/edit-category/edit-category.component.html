@@ -1,1 +1,28 @@
-<p>{{categoryIdFromRoute}}</p>
+<app-generic-header [title]="title"></app-generic-header>
+
+<div class="container">
+
+    <form  class="wrapper" (ngSubmit)="editCategory()" [formGroup]="form">
+
+      <h1>Informe os dados</h1>
+
+      <!-- Nome -->
+      <div class="input-box">
+        <input type="text" placeholder="Nome da Categoria" formControlName="name" >
+      </div>
+
+      <!-- Descrição -->
+      <div class="input-box">
+        <input type="text" placeholder="Descrição" formControlName="desc" >
+      </div>
+
+      <button type="submit" class="standard-btn"> Editar Categoria </button>
+
+    </form>
+
+
+</div>
+
+
+<app-footer-login></app-footer-login>
+

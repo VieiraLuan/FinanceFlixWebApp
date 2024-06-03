@@ -37,4 +37,5 @@ export const phrases = {
   searching: 'Pesquisando...',
   confirmDeleteCategory: 'Deseja realmente excluir a categoria?',
   categoryDeleted: 'Categoria excluída com sucesso',
+  categoryUpdated: 'Categoria atualizada com sucesso',
 };
