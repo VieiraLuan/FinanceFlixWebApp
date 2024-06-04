@@ -1,11 +1,12 @@
 import { Observable } from 'rxjs';
-import { CategoryRequest } from './../../dtos/CategoryRequest';
-import { AlertService } from './../../services/alert/alert.service';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { phrases } from 'src/app/shared/phrases/phrases';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import { CategoryRequest } from 'src/app/dtos/CategoryRequest';
 
 @Component({
   selector: 'app-add-category',
@@ -79,7 +80,7 @@ export class AddCategoryComponent implements OnInit {
           );
           setTimeout(() => {
             this.alertService.closeAlert();
-            this.returnToList();        
+            this.returnToList();
           }, 1000);
         },
         error: (error) => {

@@ -4,12 +4,15 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
-import { CategoryComponent } from './components/category/category.component';
-import { CoursesComponent } from './components/courses/courses.component';
+
+import { CoursesComponent } from './components/course-feature/courses/courses.component';
 import { VideosComponent } from './components/videos/videos.component';
 import { CertificatesComponent } from './components/certificates/certificates.component';
-import { AddCategoryComponent } from './components/add-category/add-category.component';
-import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { CategoryComponent } from './components/category-feature/category/category.component';
+import { AddCategoryComponent } from './components/category-feature/add-category/add-category.component';
+import { EditCategoryComponent } from './components/category-feature/edit-category/edit-category.component';
+import { AddCourseComponent } from './components/course-feature/add-course/add-course.component';
+import { EditCourseComponent } from './components/course-feature/edit-course/edit-course.component';
 
 const routes: Routes = [
 
@@ -31,6 +34,9 @@ const routes: Routes = [
 
 //Course
 {path:'courses',component:CoursesComponent,pathMatch:'full', canActivate: [AuthGuard]},
+{path:'course/add',component:AddCourseComponent,pathMatch:'full', canActivate: [AuthGuard]},
+{path:'course/edit/:id',component:EditCourseComponent,pathMatch:'full', canActivate: [AuthGuard]},
+
 
 // Video
 {path:'videos',component:VideosComponent,pathMatch:'full', canActivate: [AuthGuard]},

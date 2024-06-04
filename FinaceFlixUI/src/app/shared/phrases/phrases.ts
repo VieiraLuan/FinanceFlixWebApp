@@ -31,6 +31,8 @@ export const phrases = {
   passwordMustMatch: 'As senhas devem ser iguais',
   invalidName: 'Nome inválido',
   invalidDesc: 'Descrição inválida',
+  invalidCategory: 'Categoria inválida',
+  chooseValidCategory: 'Escolha uma categoria',
   writeValidDesc: 'Informe uma descrição válida',
   writeValidName: 'Informe um nome válido',
   chooseValidRole: 'Escolha um tipo de conta',
@@ -38,4 +40,6 @@ export const phrases = {
   confirmDeleteCategory: 'Deseja realmente excluir a categoria?',
   categoryDeleted: 'Categoria excluída com sucesso',
   categoryUpdated: 'Categoria atualizada com sucesso',
+  emptyImage: 'Nenhuma imagem foi selecionada',
+  selectAnImage: 'Selecione uma imagem',
 };

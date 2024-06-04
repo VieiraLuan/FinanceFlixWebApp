@@ -14,12 +14,15 @@ import { GenericHeaderComponent } from './shared/components/generic-header/gener
 import { LoggingInterceptor } from './shared/interceptor';
 import { HeaderCreateAccountComponent } from './components/header-create-account/header-create-account.component';
 import { HeaderAuthenticatedComponent } from './components/header-authenticated/header-authenticated.component';
-import { CategoryComponent } from './components/category/category.component';
-import { CoursesComponent } from './components/courses/courses.component';
+
+import { CoursesComponent } from './components/course-feature/courses/courses.component';
 import { VideosComponent } from './components/videos/videos.component';
 import { CertificatesComponent } from './components/certificates/certificates.component';
-import { AddCategoryComponent } from './components/add-category/add-category.component';
-import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { AddCategoryComponent } from './components/category-feature/add-category/add-category.component';
+import { EditCategoryComponent } from './components/category-feature/edit-category/edit-category.component';
+import { CategoryComponent } from './components/category-feature/category/category.component';
+import { AddCourseComponent } from './components/course-feature/add-course/add-course.component';
+import { EditCourseComponent } from './components/course-feature/edit-course/edit-course.component';
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
     VideosComponent,
     CertificatesComponent,
     AddCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    AddCourseComponent,
+    EditCourseComponent
   ],
   imports: [
     ReactiveFormsModule,
