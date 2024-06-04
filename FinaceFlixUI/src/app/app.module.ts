@@ -16,13 +16,15 @@ import { HeaderCreateAccountComponent } from './components/header-create-account
 import { HeaderAuthenticatedComponent } from './components/header-authenticated/header-authenticated.component';
 
 import { CoursesComponent } from './components/course-feature/courses/courses.component';
-import { VideosComponent } from './components/videos/videos.component';
+import { VideosComponent } from './components/video-feature/videos/videos.component';
 import { CertificatesComponent } from './components/certificates/certificates.component';
 import { AddCategoryComponent } from './components/category-feature/add-category/add-category.component';
 import { EditCategoryComponent } from './components/category-feature/edit-category/edit-category.component';
 import { CategoryComponent } from './components/category-feature/category/category.component';
 import { AddCourseComponent } from './components/course-feature/add-course/add-course.component';
 import { EditCourseComponent } from './components/course-feature/edit-course/edit-course.component';
+import { AddVideoComponent } from './components/video-feature/add-video/add-video.component';
+import { EditVideoComponent } from './components/video-feature/edit-video/edit-video.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { EditCourseComponent } from './components/course-feature/edit-course/edi
     AddCategoryComponent,
     EditCategoryComponent,
     AddCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    AddVideoComponent,
+    EditVideoComponent
   ],
   imports: [
     ReactiveFormsModule,

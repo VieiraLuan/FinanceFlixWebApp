@@ -6,13 +6,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 
 import { CoursesComponent } from './components/course-feature/courses/courses.component';
-import { VideosComponent } from './components/videos/videos.component';
+import { VideosComponent } from './components/video-feature/videos/videos.component';
 import { CertificatesComponent } from './components/certificates/certificates.component';
 import { CategoryComponent } from './components/category-feature/category/category.component';
 import { AddCategoryComponent } from './components/category-feature/add-category/add-category.component';
 import { EditCategoryComponent } from './components/category-feature/edit-category/edit-category.component';
 import { AddCourseComponent } from './components/course-feature/add-course/add-course.component';
 import { EditCourseComponent } from './components/course-feature/edit-course/edit-course.component';
+import { AddVideoComponent } from './components/video-feature/add-video/add-video.component';
+import { EditVideoComponent } from './components/video-feature/edit-video/edit-video.component';
 
 const routes: Routes = [
 
@@ -40,6 +42,8 @@ const routes: Routes = [
 
 // Video
 {path:'videos',component:VideosComponent,pathMatch:'full', canActivate: [AuthGuard]},
+{path:'video/add',component:AddVideoComponent,pathMatch:'full', canActivate: [AuthGuard]},
+{path:'video/edit',component:EditVideoComponent,pathMatch:'full', canActivate: [AuthGuard]},
 
 //Certificates
 {path:'certificates',component:CertificatesComponent,pathMatch:'full', canActivate: [AuthGuard]},

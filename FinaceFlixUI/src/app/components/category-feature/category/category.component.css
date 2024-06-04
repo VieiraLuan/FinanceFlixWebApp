@@ -9,7 +9,6 @@
   min-width: 100%;
   min-height: 100vh;
   background: linear-gradient(90deg, #143489, #3a0a48);
-
 }
 
 .sub-container {
@@ -90,7 +89,7 @@
 }
 
 
-table {  
+table {
   color: white;
   border: 1px solid white;
   max-width: 100%;
@@ -118,30 +117,30 @@ td {
 }
 
 .th-checkbox {
-  width: 3vw; 
+  width: 3vw;
 }
 
 
 .th-name {
-  width: 32vw; 
+  width: 32vw;
 }
 
 .th-desc {
-  width: 32vw; 
+  width: 32vw;
 }
 
 .td-checkbox {
-  width: 3vw; 
+  width: 3vw;
 }
 
 .td-name {
-  width: 32vw; 
+  width: 32vw;
 }
 
 .td-desc {
   display: flex;
   overflow: scroll;
-  width: 32vw; 
+  width: 32vw;
 }
 
 ::-webkit-scrollbar {
