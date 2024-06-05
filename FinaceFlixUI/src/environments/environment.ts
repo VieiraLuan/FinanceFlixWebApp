@@ -21,6 +21,11 @@ export const environment = {
   DeleteCategoryById: `api/v1/Categoria/`,
   GetCategoryById: `api/v1/Categoria/`,
   UpdateCategoryPath: `api/v1/Categoria/`,
+
+
+  // Course service endpoints
+  AddCoursePath: `api/v1/Curso/AddCursoCategoriaExists`,
+  GetCoursesByOwner: `api/v1/Curso/GetByEmail`,
 };
 
 /*

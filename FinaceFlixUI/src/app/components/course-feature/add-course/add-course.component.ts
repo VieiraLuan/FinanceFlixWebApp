@@ -6,7 +6,7 @@ import { CategoryRequest } from 'src/app/dtos/CategoryRequest';
 import { Course } from 'src/app/dtos/Course';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { CategoryService } from 'src/app/services/category/category.service';
-import { CourseService } from 'src/app/services/course.service';
+import { CourseService } from 'src/app/services/course/course.service';
 import { phrases } from 'src/app/shared/phrases/phrases';
 import { UtilsService } from 'src/app/shared/utils.service';
 
@@ -157,11 +157,10 @@ export class AddCourseComponent implements OnInit {
     return true;
   }
 
-  //Terminar implementar este método
   protected addCourse() {
     this.alertService.showLoadingAlert('Cadastrando...');
 
-    if (!this.validateFields()) {
+    if (!this.validateFields() || this.form.invalid) {
       return;
     }
 
@@ -170,20 +169,22 @@ export class AddCourseComponent implements OnInit {
       descricao: this.getDescription(),
       categoriaId: this.getCategoryId(),
       imagem: this.pictureBase64,
+      dono: this.getOwner(),
     };
 
-    // this.courseService.addCourse(course).subscribe({
-    //   next: (response) => {
-    //     this.alertService.showSuccessAlert(
-    //       phrases.categoryAddedSuccess,
-    //       phrases.categoryAdded
-    //     );
-    //     this.router.navigate(['/courses']);
-    //   },
-    //   error: (error: any) => {
-    //     console.error('Error adding course', error);
-    //     this.alertService.showErrorAlert(phrases.errorPhrase, error);
-    //   },
-    // });
+    this.courseService.addCourse(course).subscribe({
+      next: (response) => {
+        this.alertService.showSuccessAlert(
+          phrases.categoryAddedSuccess,
+          phrases.categoryAdded
+        );
+        this.router.navigate(['/courses']);
+        this.alertService.closeAlert();
+      },
+      error: (error: any) => {
+        console.error('Error adding course', error);
+        this.alertService.showErrorAlert(phrases.errorPhrase, error);
+      },
+    });
   }
 }

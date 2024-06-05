@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Course } from 'src/app/dtos/Course';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { CategoryService } from 'src/app/services/category/category.service';
+import { CourseService } from 'src/app/services/course/course.service';
 
 @Component({
   selector: 'app-courses',
@@ -15,7 +16,8 @@ export class CoursesComponent implements OnInit {
     private formGroup: FormBuilder,
     private router: Router,
     private categoryService: CategoryService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private courseService: CourseService
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +46,22 @@ export class CoursesComponent implements OnInit {
     console.log('Course deleted');
   }
 
+  private getOwner(): string {
+    return window.localStorage.getItem('userEmail') || '';
+  }
+
   private retriveCourses() {
-    console.log('Retriving courses');
+    const course: Course = {
+      dono: this.getOwner(),
+    };
+
+    this.courseService.retrieveCoursesByOwner(course).subscribe({
+      next: (response) => {
+        this.courses = response;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 }
