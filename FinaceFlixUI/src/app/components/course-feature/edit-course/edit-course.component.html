@@ -1,1 +1,38 @@
-<p>edit-course works!</p>
+<app-generic-header [title]="title"></app-generic-header>
+
+<div class="container">
+
+  <form class="wrapper" (ngSubmit)="editCourse()" [formGroup]="form">
+
+    <!-- Foto -->
+    <div>
+      <label for="picture">Escolha uma foto de capa para o curso</label>
+      <input type="file" class="picture" id="picture" name="picture" accept="image/*" formControlName="picture"
+        (change)="onFileSelected($event)">
+    </div>
+
+    <!-- Nome -->
+    <div class="input-box">
+      <input type="text" placeholder="Nome do curso" formControlName="name">
+    </div>
+
+    <!-- Descrição -->
+    <div class="input-box">
+      <input type="text" placeholder="Descrição do curso" formControlName="description">
+    </div>
+
+    <!-- Categorias -->
+    <div class="input-box">
+      <select class="options" formControlName="categoryId">
+        <option [selected]="" [value]=course.categoria?.id> Valor Definido - {{course.categoria?.nome}}</option>
+        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="standard-btn"> Editar Curso </button>
+
+  </form>
+
+</div>
+
+<app-footer-login></app-footer-login>

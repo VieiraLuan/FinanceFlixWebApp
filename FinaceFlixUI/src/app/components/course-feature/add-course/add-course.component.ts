@@ -172,6 +172,8 @@ export class AddCourseComponent implements OnInit {
       dono: this.getOwner(),
     };
 
+    console.log(course);
+
     this.courseService.addCourse(course).subscribe({
       next: (response) => {
         this.alertService.showSuccessAlert(

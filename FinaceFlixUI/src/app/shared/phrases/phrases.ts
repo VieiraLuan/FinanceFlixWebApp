@@ -42,4 +42,5 @@ export const phrases = {
   categoryUpdated: 'Categoria atualizada com sucesso',
   emptyImage: 'Nenhuma imagem foi selecionada',
   selectAnImage: 'Selecione uma imagem',
+  courseUpdated: 'Curso atualizado com sucesso',
 };

@@ -5,6 +5,7 @@ import { Course } from 'src/app/dtos/Course';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { CourseService } from 'src/app/services/course/course.service';
+import { phrases } from 'src/app/shared/phrases/phrases';
 
 @Component({
   selector: 'app-courses',
@@ -29,7 +30,14 @@ export class CoursesComponent implements OnInit {
 
   form!: FormGroup;
 
-  courses: Course[] = [];
+  courses: Course[] = [
+    {
+      id: '1',
+      nome: 'Curso de Finanças',
+      descricao: 'Curso de finanças pessoais',
+      dono: 'admin',
+    },
+  ];
 
   selectedIds: string[] = [];
 
@@ -38,13 +46,67 @@ export class CoursesComponent implements OnInit {
   }
 
   protected editCourse() {
-    this.router.navigate(['/course/edit/', '1']);
-    // this.router.navigate(['/category/edit/', this.selectedIds[0]]);
+    if (this.selectedIds.length === 0) {
+      this.alertService.showWarningAlert(
+        phrases.selectAtLeastOne,
+        phrases.warning
+      );
+      return;
+    }
+
+    this.router.navigate(['course/edit/', this.selectedIds[0]]);
+    this.selectedIds = [];
+  }
+
+  protected select(id?: string) {
+    if (!id) {
+      return;
+    }
+    this.selectedIds.push(id);
   }
 
   protected deleteCourse() {
-    console.log('Course deleted');
+    if (this.selectedIds.length === 0) {
+      this.alertService.showWarningAlert(
+        phrases.selectAtLeastOne,
+        phrases.warning
+      );
+      return;
+    } else {
+      this.alertService.showConfirmAlert(
+        phrases.warning,
+        phrases.confirmDeleteCategory,
+        phrases.yes,
+        phrases.no,
+        () => {
+          this.selectedIds.forEach((id) => {
+            this.courseService.deleteCourse(id).subscribe({
+              next: (response) => {
+                console.log('Course deleted' + id);
+              },
+              error: (error: any) => {
+                console.error('Error deleting Course', error);
+              },
+            });
+          });
+
+          this.selectedIds = [];
+
+          this.alertService.showSuccessAlert(
+            phrases.categoryDeleted,
+            phrases.sucess
+          );
+
+          window.location.reload();
+          this.alertService.closeAlert();
+        }
+      );
+
+
+    }
   }
+
+
 
   private getOwner(): string {
     return window.localStorage.getItem('userEmail') || '';
@@ -58,6 +120,7 @@ export class CoursesComponent implements OnInit {
     this.courseService.retrieveCoursesByOwner(course).subscribe({
       next: (response) => {
         this.courses = response;
+
       },
       error: (error) => {
         console.error(error);

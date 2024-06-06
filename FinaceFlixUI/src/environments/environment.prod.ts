@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
-//Current API URLs
+  //Current API URLs
   BaseUrl: `https://financeflix-dsv.azurewebsites.net/`,
   // BaseUrl: `https://localhost:7168/`,
 
   //Account service endpoints
-  LoginPath: `api/v1/Usuario/login`, /*Alterar para o login*/
+  LoginPath: `api/v1/Usuario/login` /*Alterar para o login*/,
   CreateAccountPath: `api/v1/Usuario/AddUser`,
 
   //Category service endpoints
@@ -15,7 +15,9 @@ export const environment = {
   GetCategoryById: `api/v1/Categoria/`,
   UpdateCategoryPath: `api/v1/Categoria/`,
 
-    // Course service endpoints
-    AddCoursePath: `api/v1/Curso/AddCursoCategoriaExists`,
-    GetCoursesByOwner: `api/v1/Curso/GetByEmail`,
+  // Course service endpoints
+  AddCoursePath: `api/v1/Curso/AddCursoCategoriaExists`,
+  GetCoursesByOwner: `api/v1/Curso/GetByEmail`,
+  GetCourseById: `api/v1/Curso/`,
+  UpdateCoursePath: `api/v1/Curso/`,
 };

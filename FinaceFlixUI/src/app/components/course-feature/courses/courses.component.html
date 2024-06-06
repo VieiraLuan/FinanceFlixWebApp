@@ -25,7 +25,7 @@
         </tr>
 
         <tr *ngFor="let item of courses">
-          <td><input type="checkbox" class="checkbox"></td>
+          <td class="td-checkbox"><input type="checkbox" class="checkbox" (change)="select(item.id)"></td>
           <td hidden>{{item.id}}</td>
           <td class="td-name">{{item.nome}}</td>
           <td class="td-desc">{{item.descricao}}</td>

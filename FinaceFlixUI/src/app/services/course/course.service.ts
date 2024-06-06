@@ -54,21 +54,7 @@ export class CourseService {
       );
   }
 
-  public retrieveCoursesByOwner(course:Course): Observable<Course[]> {
-
-  //   {
-  //     "id": "5a09df25-07f2-44ea-bdff-78f8f74fc344",
-  //     "nome": "teste",
-  //     "descricao": "teste",
-  //     "imagem": "https://fiapsaccount.blob.core.windows.net/financeflix-images/840fdd2b-688a-47b4-a317-0da1feb24a9c.png",
-  //     "categoria": {
-  //         "id": "0e6fa0ad-4711-4a19-bdc7-7df0d22749e2",
-  //         "nome": "teste",
-  //         "descricao": "teste",
-  //         "createdDate": null
-  //     }
-  // }
-
+  public retrieveCoursesByOwner(course: Course): Observable<Course[]> {
     const retrieveCoursesPath = this.baseUrl + environment.GetCoursesByOwner;
 
     return this.http
@@ -78,7 +64,61 @@ export class CourseService {
       })
       .pipe(
         map((response: HttpResponse<Course[]>) => {
+          response.body?.forEach((element) => {
+            console.log((element.id = element.id || ''));
+
+            console.log(element.nome || '');
+            console.log(element.descricao || '');
+            console.log(element.categoriaId || '');
+            console.log(element.dono || '');
+          });
           return response.body || [];
+        })
+      );
+  }
+
+  public retrieveCourseById(course: Course): Observable<Course> {
+    const retrieveCoursePath =
+      this.baseUrl + environment.GetCourseById + course.id;
+
+    return this.http
+      .get<Course>(retrieveCoursePath, {
+        headers: this.headers,
+        observe: 'response',
+      })
+      .pipe(
+        map((response: HttpResponse<Course>) => {
+          return response.body || course;
+        })
+      );
+  }
+
+  public updateCourse(course: Course): Observable<Course> {
+    const updateCoursePath = this.baseUrl + environment.UpdateCoursePath;
+
+    return this.http
+      .put<Course>(updateCoursePath, course, {
+        headers: this.headers,
+        observe: 'response',
+      })
+      .pipe(
+        map((response: HttpResponse<Course>) => {
+          return response.body || course;
+        })
+      );
+  }
+
+  public deleteCourse(id: string): Observable<Course> {
+    const deleteCoursePath = this.baseUrl + environment.DeleteCourseById + id;
+
+    return this.http
+      .delete<Course>(deleteCoursePath, {
+        headers: this.headers,
+        observe: 'response',
+      })
+      .pipe(
+        map((response: HttpResponse<Course>) => {
+          return response.body || { id: '' };
         })
       );
   }
