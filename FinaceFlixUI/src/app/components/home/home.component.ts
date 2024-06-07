@@ -2,6 +2,13 @@ import { AlertService } from './../../services/alert/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/dtos/Category';
+import { CategoryRequest } from 'src/app/dtos/CategoryRequest';
+import { CategoryResponse } from 'src/app/dtos/CategoryResponse';
+import { Course } from 'src/app/dtos/Course';
+import { HomeList } from 'src/app/dtos/HomeList';
+import { CategoryService } from 'src/app/services/category/category.service';
+import { CourseService } from 'src/app/services/course/course.service';
 import { phrases } from 'src/app/shared/phrases/phrases';
 
 @Component({
@@ -13,27 +20,22 @@ export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private courseService: CourseService,
+    private categoryService: CategoryService
   ) {}
 
   form!: FormGroup;
-  cursos = [
-    { id: 1, nome: 'Angular' },
-    { id: 2, nome: 'Java' },
-    { id: 3, nome: 'React' },
-    { id: 4, nome: 'Vue' },
-    { id: 5, nome: 'Python' },
-    { id: 6, nome: 'C#' },
-    { id: 7, nome: 'Node' },
-    { id: 8, nome: 'Ionic' },
-    { id: 9, nome: 'Flutter' },
-    { id: 10, nome: 'Dart' },
-  ];
+  homeList: HomeList[] = [];
+
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       search: [null],
     });
+
+    this.find();
+
   }
 
   private getSearchText() {
@@ -48,12 +50,20 @@ export class HomeComponent implements OnInit {
       this.getSearchText()!.value === undefined ||
       this.getSearchText()!.value === ''
     ) {
-      console.log('Search text is empty, find all');
+      console.log('Search text is empty, finding all');
+
+      this.courseService.retrieveAllCourses().subscribe({
+        next: (response) => {
+          this.homeList = response;
+          this.alertService.closeAlert();
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
     } else {
       console.log('Searching for: ' + this.getSearchText()!.value);
+      this.form.reset();
     }
-
-    this.form.reset();
-    this.router.navigate(['home']);
   }
 }

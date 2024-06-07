@@ -16,8 +16,10 @@ export const environment = {
   UpdateCategoryPath: `api/v1/Categoria/`,
 
   // Course service endpoints
+  GetAllCoursesPath: `api/v1/Categoria/GetAllCategoriesWithCourse`,
   AddCoursePath: `api/v1/Curso/AddCursoCategoriaExists`,
   GetCoursesByOwner: `api/v1/Curso/GetByEmail`,
   GetCourseById: `api/v1/Curso/`,
   UpdateCoursePath: `api/v1/Curso/`,
+  DeleteCourseById: `api/v1/Curso/`,
 };

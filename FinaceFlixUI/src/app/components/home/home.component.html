@@ -10,37 +10,44 @@
       <button type="button" (click)="find()"> Pesquisar </button>
     </form>
 
+    <ul *ngFor='let item of homeList'>
 
-    <!-- Category Name -->
-    <h2 class="course-categories">Adicionados recentemente</h2>
+      <!-- Category Name -->
+      <h2 class="course-categories">{{item.nome}}</h2>
 
-    <!-- Course Grid -->
-    <div class="course-grid">
+      <!-- Course Grid -->
+      <div class="course-grid">
 
-      <!-- Category Items -->
-      <div class="course-items">
+        <!-- Category Items -->
 
-        <ul *ngFor="let item of cursos">
+
+        <div class="course-items" *ngFor='let course of item.curso'>
           <!-- Course -->
           <div class="title-item" routerLink="/videoList">
-            <img class="image-item" src="assets/img/logo-financeFlix150x150.png" alt="Curso">
+            <img class="image-item" src={{course.imagem}} alt="Curso">
             <div class="items">
               <div class="left-side">
-                <h2>Nome do Curso</h2>
+                <h2>{{course.nome}}</h2>
                 <ul class="infos">
                   <li class="video-qtn"> 3 Videos </li>
                 </ul>
                 <ul>
-                  <li>{{item.nome}}</li>
+                  <li>{{course.descricao}}</li>
                 </ul>
               </div>
             </div>
           </div>
-        </ul>
+        </div>
+
+
 
       </div>
 
-    </div>
+    </ul>
+
+
+
+
 
 
 

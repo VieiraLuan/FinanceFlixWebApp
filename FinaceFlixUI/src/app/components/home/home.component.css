@@ -133,5 +133,6 @@
 .course-items {
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
+  overflow-x: auto;
+
 }

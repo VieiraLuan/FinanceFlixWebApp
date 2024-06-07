@@ -9,5 +9,4 @@ export interface Course {
   categoriaNome?: string;
   dono?: string;
   categoria?: CategoryCourseResponse;
-
 }

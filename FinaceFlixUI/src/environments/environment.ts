@@ -24,6 +24,7 @@ export const environment = {
 
 
   // Course service endpoints
+  GetAllCoursesPath: `api/v1/Categoria/GetAllCategoriesWithCourse`,
   AddCoursePath: `api/v1/Curso/AddCursoCategoriaExists`,
   GetCoursesByOwner: `api/v1/Curso/GetByEmail`,
   GetCourseById: `api/v1/Curso/`,

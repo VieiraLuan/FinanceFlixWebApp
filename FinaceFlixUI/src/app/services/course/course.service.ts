@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Course } from 'src/app/dtos/Course';
+import { HomeList } from 'src/app/dtos/HomeList';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -51,6 +52,29 @@ export class CourseService {
             return { nome, descricao, categoriaId };
           }
         )
+      );
+  }
+
+  public retrieveAllCourses(): Observable<HomeList[]> {
+    const retrieveAllCoursesPath = this.baseUrl + environment.GetAllCoursesPath;
+
+    return this.http
+      .get<HomeList[]>(retrieveAllCoursesPath, {
+        headers: this.headers,
+        observe: 'response',
+      })
+      .pipe(
+        map((response: HttpResponse<HomeList[]>) => {
+
+          const homeList:HomeList[] = [];
+
+          response.body?.forEach((element) => {
+            if(element.curso.length > 0){
+              homeList.push(element);
+            }
+          });
+          return homeList || [];
+        })
       );
   }
 
