@@ -1,15 +1,16 @@
 <app-header-authenticated> </app-header-authenticated>
 
-<div class="body">
-
-  <div class="container">
-    <!-- Barra de pesquisa -->
+<div class="container">
+  <!-- Barra de pesquisa -->
+  <div>
     <form class="search-box" [formGroup]="form">
-      <input type="text" placeholder="Pesquisar" formControlName="search">
+      <input type="text" placeholder="Pesquisar" formControlName="search" (keydown.enter)="search()">
 
-      <button type="button" (click)="find()"> Pesquisar </button>
+      <button type="button" (click)="search()" (keydown.enter)="search()"> Pesquisar </button>
     </form>
+  </div>
 
+  <div>
     <ul *ngFor='let item of homeList'>
 
       <!-- Category Name -->
@@ -19,9 +20,7 @@
       <div class="course-grid">
 
         <!-- Category Items -->
-
-
-        <div class="course-items" *ngFor='let course of item.curso'>
+        <div class="course-item" *ngFor='let course of item.curso'>
           <!-- Course -->
           <div class="title-item" routerLink="/videoList">
             <img class="image-item" src={{course.imagem}} alt="Curso">
@@ -38,21 +37,9 @@
             </div>
           </div>
         </div>
-
-
-
       </div>
-
     </ul>
-
-
-
-
-
-
-
   </div>
-
 </div>
 
 <app-footer-login> </app-footer-login>

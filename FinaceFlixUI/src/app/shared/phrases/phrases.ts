@@ -43,4 +43,5 @@ export const phrases = {
   emptyImage: 'Nenhuma imagem foi selecionada',
   selectAnImage: 'Selecione uma imagem',
   courseUpdated: 'Curso atualizado com sucesso',
+  noResultsFound: 'Nenhum resultado encontrado',
 };

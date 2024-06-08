@@ -27,42 +27,74 @@ export class HomeComponent implements OnInit {
 
   form!: FormGroup;
   homeList: HomeList[] = [];
-
+  cacheFromList: HomeList[] = [];
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       search: [null],
     });
 
-    this.find();
-
+    this.search();
   }
 
   private getSearchText() {
     return this.form.get('search');
   }
 
-  protected find() {
+  private find() {
     this.alertService.showLoadingAlert(phrases.searching);
 
+    this.courseService.retrieveAllCourses().subscribe({
+      next: (response) => {
+        this.cacheFromList = response;
+
+        if (this.cacheFromList.length === 0) {
+          this.alertService.showWarningAlert(
+            phrases.noResultsFound,
+            phrases.warning
+          );
+        } else {
+          this.homeList = this.cacheFromList;
+          this.alertService.closeAlert();
+        }
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+
+  protected search() {
     if (
       this.getSearchText()!.value === null ||
       this.getSearchText()!.value === undefined ||
       this.getSearchText()!.value === ''
     ) {
       console.log('Search text is empty, finding all');
-
-      this.courseService.retrieveAllCourses().subscribe({
-        next: (response) => {
-          this.homeList = response;
-          this.alertService.closeAlert();
-        },
-        error: (error) => {
-          console.error(error);
-        },
-      });
+      this.find();
+      this.homeList = this.cacheFromList;
     } else {
       console.log('Searching for: ' + this.getSearchText()!.value);
+      this.alertService.showLoadingAlert(phrases.searching);
+      const keyword: string = this.getSearchText()!.value;
+      const cache = this.cacheFromList;
+
+      const filteredCourses = cache.filter((item) => {
+        return item.curso.some((curso) =>
+          curso.nome!.toLowerCase().match(keyword.toLowerCase())
+        );
+      });
+
+      if (filteredCourses.length === 0) {
+        this.alertService.showWarningAlert(
+          phrases.noResultsFound,
+          phrases.warning
+        );
+      } else {
+        this.homeList = filteredCourses;
+        this.alertService.closeAlert();
+      }
+
       this.form.reset();
     }
   }

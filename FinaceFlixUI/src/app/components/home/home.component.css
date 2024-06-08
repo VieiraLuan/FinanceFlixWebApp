@@ -5,24 +5,23 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.body {
-  background: linear-gradient(90deg, #143489, #3a0a48);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .container {
-
+  background: linear-gradient(90deg, #143489, #3a0a48);
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100vh;
 }
 
 .search-box {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 10%;
 }
 
 .search-box input {
@@ -57,14 +56,29 @@
   color: #fff;
   font-size: 24px;
   margin-bottom: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .course-grid {
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  flex-wrap: wrap;
   align-items: center;
-  min-width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
+
+.course-item {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  max-width: 200px;
+  height: 250px;
+  margin-bottom: 1%;
+
+}
+
 
 .title-item {
   position: relative;
@@ -130,9 +144,3 @@
   height: 250px;
 }
 
-.course-items {
-  display: flex;
-  flex-wrap: wrap;
-  overflow-x: auto;
-
-}
