@@ -5,37 +5,40 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .container {
-  justify-content: center;
-  align-items: center;
+  min-width: 100%;
   min-height: 100vh;
-  min-width: 100vw;
-  background: linear-gradient(90deg, #143489, #3A0A48);
-  padding-top: 7%;
+  background: linear-gradient(90deg, #143489, #3a0a48);
 }
 
-.sub-container{
-  justify-content: center;
-  align-items: center;
-  margin-left: 15%;
-  margin-right: 15%;
-
-  padding-bottom: 10%;
-  padding-top: 2% ;
-  box-shadow: 1px 15px 10px  rgba(0, 0, 0, 0.4);
-}
-
-
-.toolbar{
+.sub-container {
   display: flex;
   justify-content: start;
   align-items: center;
-  margin-left: 2%;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.4);
 }
 
-.add-btn
-{
+.toolbar {
+  justify-content: start;
+  align-items: center;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 2%;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+  padding: 1%;
+}
+
+.toolbar-buttons {
+  justify-content: start;
+  align-items: center;
+}
+
+.add-btn {
   width: 100px;
   height: 35px;
   background: #87beff;
@@ -47,11 +50,10 @@
   font-size: 16px;
   color: #fff;
   font-weight: 600;
-  margin-right: 50px;
+  margin-right: 5px;
 }
 
-.edit-btn
-{
+.edit-btn {
   width: 100px;
   height: 35px;
   background: #cbb525;
@@ -63,11 +65,10 @@
   font-size: 16px;
   color: #fff;
   font-weight: 600;
-  margin-right: 50px;
+  margin-right: 5px;
 }
 
-.delete-btn
-{
+.delete-btn {
   width: 100px;
   height: 35px;
   background: red;
@@ -81,23 +82,28 @@
   font-weight: 600;
 }
 
-.list-data{
+.list-data {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
-table{
+table {
   color: white;
-  margin-top: 2%;
   border: 1px solid white;
+  width: 100%;
 }
 
-tr{
+tr {
+  display: flex;
   border: 1px solid white;
+  width: 100%;
 }
 
-th{
+th {
   padding: 1%;
   text-align: center;
   border: 1px solid white;
@@ -105,25 +111,48 @@ th{
   font-weight: bold;
 }
 
-td{
-  padding: 10px;
+td {
+  padding: 1%;
   text-align: center;
   border: 1px solid white;
   text-transform: capitalize;
 }
 
-.th-name{
-  min-width: 16vw;
+.th-checkbox {
+  width: 3%;
 }
 
-.th-desc{
-  min-width: 30vw;
+.th-name {
+  width: 30%;
 }
 
-.th-duration{
-  min-width: 10vw;
+.th-desc {
+  width: 40%;
 }
 
-.th-course{
-  min-width: 10vw;
+.th-course {
+  width: 30%;
+}
+
+.td-checkbox {
+  width: 3%;
+}
+
+.td-name {
+  width: 30%;
+}
+
+.td-desc {
+  display: flex;
+  overflow: scroll;
+  width: 40%;
+}
+
+.td-course {
+  width: 30%;
+}
+
+::-webkit-scrollbar {
+  width: 100%;
+  height: 100%;
 }

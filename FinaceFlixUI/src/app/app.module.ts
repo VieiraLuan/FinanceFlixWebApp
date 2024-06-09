@@ -25,6 +25,7 @@ import { AddCourseComponent } from './components/course-feature/add-course/add-c
 import { EditCourseComponent } from './components/course-feature/edit-course/edit-course.component';
 import { AddVideoComponent } from './components/video-feature/add-video/add-video.component';
 import { EditVideoComponent } from './components/video-feature/edit-video/edit-video.component';
+import { VideoListComponent } from './components/video-feature/video-list/video-list.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { EditVideoComponent } from './components/video-feature/edit-video/edit-v
     AddCourseComponent,
     EditCourseComponent,
     AddVideoComponent,
-    EditVideoComponent
+    EditVideoComponent,
+    VideoListComponent
   ],
   imports: [
     ReactiveFormsModule,

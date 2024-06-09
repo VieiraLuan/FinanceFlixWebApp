@@ -14,9 +14,7 @@ import { phrases } from 'src/app/shared/phrases/phrases';
 })
 export class CoursesComponent implements OnInit {
   constructor(
-    private formGroup: FormBuilder,
     private router: Router,
-    private categoryService: CategoryService,
     private alertService: AlertService,
     private courseService: CourseService
   ) {}
@@ -30,14 +28,7 @@ export class CoursesComponent implements OnInit {
 
   form!: FormGroup;
 
-  courses: Course[] = [
-    {
-      id: '1',
-      nome: 'Curso de Finanças',
-      descricao: 'Curso de finanças pessoais',
-      dono: 'admin',
-    },
-  ];
+  courses: Course[] = [];
 
   selectedIds: string[] = [];
 
@@ -81,7 +72,7 @@ export class CoursesComponent implements OnInit {
         () => {
           this.selectedIds.forEach((id) => {
             this.courseService.deleteCourse(id).subscribe({
-              next: (response) => {
+              next: () => {
                 console.log('Course deleted' + id);
               },
               error: (error: any) => {
@@ -105,8 +96,6 @@ export class CoursesComponent implements OnInit {
 
     }
   }
-
-
 
   private getOwner(): string {
     return window.localStorage.getItem('userEmail') || '';

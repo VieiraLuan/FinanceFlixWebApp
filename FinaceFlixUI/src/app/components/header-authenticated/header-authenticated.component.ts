@@ -29,6 +29,10 @@ export class HeaderAuthenticatedComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  protected getUserType(){
+    return window.localStorage.getItem('userType');
+  }
+
 
 
 }

@@ -88,14 +88,7 @@ export class CourseService {
       })
       .pipe(
         map((response: HttpResponse<Course[]>) => {
-          response.body?.forEach((element) => {
-            console.log((element.id = element.id || ''));
 
-            console.log(element.nome || '');
-            console.log(element.descricao || '');
-            console.log(element.categoriaId || '');
-            console.log(element.dono || '');
-          });
           return response.body || [];
         })
       );

@@ -44,4 +44,10 @@ export const phrases = {
   selectAnImage: 'Selecione uma imagem',
   courseUpdated: 'Curso atualizado com sucesso',
   noResultsFound: 'Nenhum resultado encontrado',
+  invalidVideoDuration: 'Duração do vídeo inválida',
+  writeValidDuration: 'Informe uma duração válida para o vídeo em "minutos"',
+  invalidCourse: 'Curso inválido',
+  chooseValidCourse: 'Escolha um curso',
+  invalidVideo: 'Vídeo inválido',
+  uploadValidVideo: 'Carregue um vídeo válido',
 };

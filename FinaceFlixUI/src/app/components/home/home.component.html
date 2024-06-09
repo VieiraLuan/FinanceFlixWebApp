@@ -21,17 +21,18 @@
 
         <!-- Category Items -->
         <div class="course-item" *ngFor='let course of item.curso'>
+
           <!-- Course -->
-          <div class="title-item" routerLink="/videoList">
+          <div class="title-item">
             <img class="image-item" src={{course.imagem}} alt="Curso">
             <div class="items">
               <div class="left-side">
-                <h2>{{course.nome}}</h2>
+                <h2 (click)="redirectToVideoList(course.id!)">{{course.nome}}</h2>
                 <ul class="infos">
-                  <li class="video-qtn"> 3 Videos </li>
+                  <li (click)="redirectToVideoList(course.id!)" class="video-qtn"> 3 Videos </li>
                 </ul>
                 <ul>
-                  <li>{{course.descricao}}</li>
+                  <li (click)="redirectToVideoList(course.id!)">{{course.descricao}}</li>
                 </ul>
               </div>
             </div>

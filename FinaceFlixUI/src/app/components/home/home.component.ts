@@ -98,4 +98,9 @@ export class HomeComponent implements OnInit {
       this.form.reset();
     }
   }
+
+  protected redirectToVideoList(courseId: string) {
+    console.log('Redirecting to video list'+ courseId);
+    this.router.navigate(['video/list']);
+  }
 }
