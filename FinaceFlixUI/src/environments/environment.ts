@@ -31,6 +31,9 @@ export const environment = {
   UpdateCoursePath: `api/v1/Curso/`,
   DeleteCourseById: `api/v1/Curso/`,
 
+  // Video service endpoints
+  AddVideoPath: `api/v1/Video/Add`,
+
 };
 
 /*

@@ -65,11 +65,10 @@ export class CourseService {
       })
       .pipe(
         map((response: HttpResponse<HomeList[]>) => {
-
-          const homeList:HomeList[] = [];
+          const homeList: HomeList[] = [];
 
           response.body?.forEach((element) => {
-            if(element.curso.length > 0){
+            if (element.curso.length > 0) {
               homeList.push(element);
             }
           });
@@ -88,7 +87,6 @@ export class CourseService {
       })
       .pipe(
         map((response: HttpResponse<Course[]>) => {
-
           return response.body || [];
         })
       );

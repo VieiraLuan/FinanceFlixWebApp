@@ -25,10 +25,8 @@ export class VideosComponent implements OnInit {
     Id: '',
     Nome: '',
     Descricao: '',
-    Url: '',
+    videoUrl: '',
     DuracaoSegundos: '0',
-    FilePath: '',
-    Dono: '',
   }];
 
   ngOnInit(): void {
@@ -113,10 +111,8 @@ export class VideosComponent implements OnInit {
       Id: '',
       Nome: '',
       Descricao: '',
-      Url: '',
+      videoUrl: '',
       DuracaoSegundos: '',
-      FilePath: '',
-      Dono: this.getOwner(),
     };
 
     // this.videoService.retrieveCoursesByOwner(video).subscribe({

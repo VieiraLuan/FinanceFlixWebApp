@@ -2,8 +2,11 @@ import { AlertService } from './../../../services/alert/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Course } from 'src/app/dtos/Course';
+import { VideoRequest } from 'src/app/dtos/VideoRequest';
 import { CourseService } from 'src/app/services/course/course.service';
+import { VideoService } from 'src/app/services/video/video.service';
 import { phrases } from 'src/app/shared/phrases/phrases';
+import { UtilsService } from 'src/app/shared/utils.service';
 
 @Component({
   selector: 'app-add-video',
@@ -14,7 +17,9 @@ export class AddVideoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private courseService: CourseService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private videoService: VideoService,
+    private utilsService:UtilsService
   ) {}
 
   ngOnInit(): void {
@@ -35,16 +40,32 @@ export class AddVideoComponent implements OnInit {
 
   form!: FormGroup;
 
+  videoFile: string = '';
+
   courses: Course[] = [];
 
   protected addVideo() {
-    if(this.validateFields()===false || this.form.invalid){
-      console.log('Invalid form');
+    if (this.validateFields() === false || this.form.invalid) {
       return;
     }
 
-    console.log('Valid form');
+    const video: VideoRequest = {
+      Nome: this.getName(),
+      Descricao: this.getDescription(),
+      DuracaoSegundos: this.getDuration(),
+      VideoFile: this.getVideo(),
+    };
 
+    console.log('Video', video);
+
+    this.videoService.addVideo(video).subscribe({
+      next: (response) => {
+        console.log('Video adicionado', response);
+      },
+      error: (error: any) => {
+        console.error('Error adding video', error);
+      },
+    });
   }
 
   protected onFileSelected(event: Event): void {
@@ -52,6 +73,18 @@ export class AddVideoComponent implements OnInit {
 
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
+
+      this.utilsService.convertToBase64(file).then((base64) => {
+        var replaced = base64.replace(
+          'data:video/mp4;base64,',
+          ''
+        );
+
+        this.videoFile = replaced;
+        console.log('Video', this.videoFile);
+
+      });
+
     }
   }
 
@@ -72,7 +105,7 @@ export class AddVideoComponent implements OnInit {
   }
 
   private getVideo(): string {
-    return this.form.get('video')?.value;
+    return this.videoFile;
   }
 
   private getOwner(): string {
@@ -96,30 +129,56 @@ export class AddVideoComponent implements OnInit {
     });
   }
 
-  private validateFields():boolean{
-
-    if(this.getName() === null || this.getName() === '' || this.getName() === undefined){
-      this.alertService.showWarningAlert(phrases.writeValidName,phrases.invalidName);
+  private validateFields(): boolean {
+    if (
+      this.getName() === null ||
+      this.getName() === '' ||
+      this.getName() === undefined
+    ) {
+      this.alertService.showWarningAlert(
+        phrases.writeValidName,
+        phrases.invalidName
+      );
       return false;
     }
 
-    if(this.getDuration() === null || this.getDuration() === '' || this.getDuration() === undefined){
-      this.alertService.showWarningAlert(phrases.writeValidDuration,phrases.invalidVideoDuration);
+    if (
+      this.getDuration() === null ||
+      this.getDuration() === '' ||
+      this.getDuration() === undefined
+    ) {
+      this.alertService.showWarningAlert(
+        phrases.writeValidDuration,
+        phrases.invalidVideoDuration
+      );
       return false;
     }
 
-    if(this.getCourseId() === null || this.getCourseId() === '' || this.getCourseId() === undefined || this.getCourseId() === '0'){
-      this.alertService.showWarningAlert(phrases.chooseValidCourse,phrases.invalidCourse);
+    if (
+      this.getCourseId() === null ||
+      this.getCourseId() === '' ||
+      this.getCourseId() === undefined ||
+      this.getCourseId() === '0'
+    ) {
+      this.alertService.showWarningAlert(
+        phrases.chooseValidCourse,
+        phrases.invalidCourse
+      );
       return false;
     }
 
-    if(this.getVideo() === null || this.getVideo() === '' || this.getVideo() === undefined){
-      this.alertService.showWarningAlert(phrases.uploadValidVideo,phrases.invalidVideo);
+    if (
+      this.getVideo() === null ||
+      this.getVideo() === undefined ||
+      this.getVideo() === ''
+    ) {
+      this.alertService.showWarningAlert(
+        phrases.uploadValidVideo,
+        phrases.invalidVideo
+      );
       return false;
     }
 
     return true;
   }
-
-
 }
