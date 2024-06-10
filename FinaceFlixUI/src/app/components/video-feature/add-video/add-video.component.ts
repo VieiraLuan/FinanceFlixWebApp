@@ -1,3 +1,4 @@
+import { CourseVideo } from 'src/app/dtos/CourseVideo';
 import { AlertService } from './../../../services/alert/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,6 +8,7 @@ import { CourseService } from 'src/app/services/course/course.service';
 import { VideoService } from 'src/app/services/video/video.service';
 import { phrases } from 'src/app/shared/phrases/phrases';
 import { UtilsService } from 'src/app/shared/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-video',
@@ -19,7 +21,8 @@ export class AddVideoComponent implements OnInit {
     private courseService: CourseService,
     private alertService: AlertService,
     private videoService: VideoService,
-    private utilsService:UtilsService
+    private utilsService:UtilsService,
+    private route:Router
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +52,8 @@ export class AddVideoComponent implements OnInit {
       return;
     }
 
+    this.alertService.showSuccessAlert(phrases.creatingVideo,phrases.sucess);
+
     const video: VideoRequest = {
       Nome: this.getName(),
       Descricao: this.getDescription(),
@@ -56,14 +61,40 @@ export class AddVideoComponent implements OnInit {
       VideoFile: this.getVideo(),
     };
 
-    console.log('Video', video);
+    this.route.navigate(['/videos']);
 
     this.videoService.addVideo(video).subscribe({
       next: (response) => {
-        console.log('Video adicionado', response);
+
+
+        const cursoIds:string[] = [];
+        cursoIds.push(this.getCourseId());
+
+        const courseVideo: CourseVideo = {
+          videoId: response.id,
+          cursoIds: cursoIds
+        };
+
+        this.addVideoToCourse(courseVideo);
+
+
+
+
+
       },
       error: (error: any) => {
         console.error('Error adding video', error);
+      },
+    });
+  }
+
+  private addVideoToCourse(courseVideo:CourseVideo) {
+    this.videoService.addVideoToCourse(courseVideo.videoId,courseVideo.cursoIds).subscribe({
+      next: (response) => {
+        this.alertService.showSuccessAlert(phrases.videoCreated,phrases.sucess);
+      },
+      error: (error: any) => {
+        console.error('Error adding video to course', error);
       },
     });
   }

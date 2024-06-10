@@ -50,4 +50,7 @@ export const phrases = {
   chooseValidCourse: 'Escolha um curso',
   invalidVideo: 'Vídeo inválido',
   uploadValidVideo: 'Carregue um vídeo válido',
+  addingVideo: 'Adicionando vídeo...',
+  videoCreated: 'Vídeo adicionado com sucesso',
+  creatingVideo: 'Criando vídeo, quando pronto poderá ver na listagem',
 };
