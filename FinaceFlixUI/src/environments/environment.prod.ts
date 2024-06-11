@@ -26,4 +26,6 @@ export const environment = {
   // Video service endpoints
   AddVideoPath: `api/v1/Video/Add`,
   AddVideoToCoursePath: `api/v1/Video/AddVideoToCurso`,
+  RetrieveVideosPath: `api/v1/Video/GetAll`,
+  GetVideoByIdPath: `api/v1/Video`,
 };

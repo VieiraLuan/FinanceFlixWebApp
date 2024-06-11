@@ -1,1 +1,40 @@
-<p>edit-video works!</p>
+<app-generic-header [title]="title"></app-generic-header>
+
+<div class="container">
+
+  <form class="wrapper" (ngSubmit)="editVideo()" [formGroup]="form">
+
+    <!-- Nome -->
+    <div class="input-box">
+      <input type="text" placeholder="Nome do video" formControlName="name">
+    </div>
+
+    <!-- Descrição -->
+    <div class="input-box">
+      <input type="text" placeholder="Descrição do video" formControlName="description">
+    </div>
+
+    <!-- Tempo Aprox. Duração -->
+    <div class="input-box">
+      <input type="text" placeholder="Duração do video" formControlName="duration">
+    </div>
+
+
+
+    <!-- Cursos -->
+    <div class="input-box">
+      <select class="options" formControlName="courseId">
+        <option [selected]="" [value]=courseSelected.id> Valor Definido - {{courseSelected.nome}}</option>
+        <option *ngFor="let course of courses" [value]="course.id">{{course.nome}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="standard-btn"> Adicionar Video </button>
+
+  </form>
+
+
+</div>
+
+
+<app-footer-login></app-footer-login>

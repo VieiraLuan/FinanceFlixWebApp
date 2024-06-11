@@ -44,7 +44,7 @@ const routes: Routes = [
 // Video
 {path:'videos',component:VideosComponent,pathMatch:'full', canActivate: [AuthGuard]},
 {path:'video/add',component:AddVideoComponent,pathMatch:'full', canActivate: [AuthGuard]},
-{path:'video/edit',component:EditVideoComponent,pathMatch:'full', canActivate: [AuthGuard]},
+{path:'video/edit/:id',component:EditVideoComponent,pathMatch:'full', canActivate: [AuthGuard]},
 {path:'video/list',component:VideoListComponent,pathMatch:'full', canActivate: [AuthGuard]},
 
 //Certificates

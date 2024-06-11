@@ -19,15 +19,16 @@
           <th class="th-id" hidden>ID</th>
           <th class="th-name">Nome</th>
           <th class="th-desc">Descrição</th>
-          <th class="th-course">Curso</th>
+          <th class="th-link">URL</th>
         </tr>
 
         <tr *ngFor="let item of videos">
-          <td><input type="checkbox" class="checkbox" (change)="select(item.Id)"></td>
-          <td hidden>{{item.Id}}</td>
-          <td class="td-name">{{item.Nome}}</td>
-          <td class="td-desc">{{item.Descricao}}</td>
-          <td class="td-course">{{item.CursoId}}</td>
+          <td><input type="checkbox" class="checkbox" (change)="select(item.id)"></td>
+          <td hidden>{{item.id}}</td>
+          <td class="td-name">{{item.nome}}</td>
+          <td class="td-desc">{{item.descricao}}</td>
+          <td class="td-link"><a href= {{item.url}}> {{item.url}}</a>
+           </td>
         </tr>
       </table>
     </div>

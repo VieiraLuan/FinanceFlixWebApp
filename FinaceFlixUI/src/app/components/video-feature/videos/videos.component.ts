@@ -20,14 +20,7 @@ export class VideosComponent implements OnInit {
 
   title?: string;
   selectedIds: string[] = [];
-  videos:Video[] = [{
-    CursoId: '',
-    Id: '',
-    Nome: '',
-    Descricao: '',
-    videoUrl: '',
-    DuracaoSegundos: '0',
-  }];
+  videos:Video[] = [];
 
   ngOnInit(): void {
     this.title = 'Videos';
@@ -52,8 +45,8 @@ export class VideosComponent implements OnInit {
     return;
   }
 
-  protected select(id?: string) {
-    if (!id) {
+  protected select(id: string) {
+    if (id === undefined || id === null || id === '') {
       return;
     }
     this.selectedIds.push(id);
@@ -106,22 +99,17 @@ export class VideosComponent implements OnInit {
   }
 
   private retriveVideo() {
-    const video: Video = {
-      CursoId: '',
-      Id: '',
-      Nome: '',
-      Descricao: '',
-      videoUrl: '',
-      DuracaoSegundos: '',
-    };
 
-    // this.videoService.retrieveCoursesByOwner(video).subscribe({
-    //   next: (response) => {
-    //     this.videos = [];
-    //   },
-    //   error: (error) => {
-    //     console.error(error);
-    //   },
-    // });
+    this.videoService.retrieveVideos().subscribe({
+      next: (response) => {
+        response.forEach((video) => {
+          this.videos.push(video);
+        });
+
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 }

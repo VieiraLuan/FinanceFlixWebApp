@@ -1,8 +1,8 @@
 export interface Video {
-  Id: string;
-  Nome: string;
-  Descricao: string;
-  CursoId?: string;
-  videoUrl: string;
-  DuracaoSegundos: string;
+  id: string;
+  nome: string;
+  descricao: string;
+  cursoId?: string;
+  url?: string;
+  duracaoSegundos: string;
 }

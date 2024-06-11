@@ -23,6 +23,20 @@ export class VideoService {
     return window.localStorage.getItem('token') || '';
   }
 
+
+  public retrieveVideos(): Observable<Video[]> {
+    const retrieveVideosPath = this.baseUrl + environment.RetrieveVideosPath;
+
+    return this.http
+      .get<Video[]>(retrieveVideosPath, { headers: this.headers })
+      .pipe(
+        map((videos: Video[]) => {
+                return videos;
+        })
+      );
+  }
+
+
   public addVideo(video: VideoRequest): Observable<{
     id: string;
     nome: string;
@@ -94,6 +108,18 @@ export class VideoService {
             return { videoId, courseId };
           }
         )
+      );
+  }
+
+  public getVideoById(id: string): Observable<Video> {
+    const getVideoByIdPath = this.baseUrl + environment.GetVideoByIdPath;
+
+    return this.http
+      .get<Video>(`${getVideoByIdPath}/${id}`, { headers: this.headers })
+      .pipe(
+        map((video: Video) => {
+          return video;
+        })
       );
   }
 

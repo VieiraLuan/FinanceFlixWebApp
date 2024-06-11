@@ -77,10 +77,6 @@ export class AddVideoComponent implements OnInit {
 
         this.addVideoToCourse(courseVideo);
 
-
-
-
-
       },
       error: (error: any) => {
         console.error('Error adding video', error);
