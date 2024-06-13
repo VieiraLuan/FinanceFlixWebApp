@@ -123,4 +123,17 @@ export class VideoService {
       );
   }
 
+  public updateVideo(video: Video): Observable<Video> {
+
+    const updateVideoPath = this.baseUrl + environment.UpdateVideoPath;
+
+    return this.http
+      .put<Video>(updateVideoPath, video, { headers: this.headers })
+      .pipe(
+        map((video: Video) => {
+          return video;
+        })
+      );
+  }
+
 }

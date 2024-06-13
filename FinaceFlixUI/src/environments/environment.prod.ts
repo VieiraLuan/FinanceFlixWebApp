@@ -28,4 +28,5 @@ export const environment = {
   AddVideoToCoursePath: `api/v1/Video/AddVideoToCurso`,
   RetrieveVideosPath: `api/v1/Video/GetAll`,
   GetVideoByIdPath: `api/v1/Video`,
+  UpdateVideoPath: `api/v1/Video`,
 };

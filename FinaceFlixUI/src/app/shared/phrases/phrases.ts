@@ -53,4 +53,7 @@ export const phrases = {
   addingVideo: 'Adicionando vídeo...',
   videoCreated: 'Vídeo adicionado com sucesso',
   creatingVideo: 'Criando vídeo, quando pronto poderá ver na listagem',
+  videoUpdated: 'Vídeo atualizado com sucesso',
+  errorUpdatingVideo: 'Erro ao atualizar o vídeo',
+
 };

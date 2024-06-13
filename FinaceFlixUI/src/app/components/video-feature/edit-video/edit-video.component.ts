@@ -74,6 +74,7 @@ export class EditVideoComponent implements OnInit {
   }
 
   protected editVideo() {
+
     if(!this.validateFields() || this.form.invalid) {
       return;
     }
@@ -84,11 +85,29 @@ export class EditVideoComponent implements OnInit {
       descricao: this.getDescription(),
       duracaoSegundos: this.getDuration(),
       cursoId: this.getCourseId(),
+      url: this.video.url,
     };
 
     console.log(video);
 
-    // Chamar serviço edit video
+    this.videoService.updateVideo(video).subscribe({
+      next: (response) => {
+        this.alertService.showSuccessAlert(
+          phrases.videoUpdated,
+          phrases.sucess
+        );
+
+        console.log(response);
+
+      },
+      error: (error: any) => {
+        console.error('Error updating video', error);
+        this.alertService.showErrorAlert(
+          phrases.errorUpdatingVideo,
+          phrases.error
+        );
+      },
+    });
 
   }
 
@@ -166,6 +185,7 @@ export class EditVideoComponent implements OnInit {
               nome: element.nome,
               descricao: element.descricao,
               dono: element.dono,
+
             };
 
             this.courseSelected = courseFound;
