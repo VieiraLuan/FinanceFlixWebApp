@@ -29,4 +29,5 @@ export const environment = {
   RetrieveVideosPath: `api/v1/Video/GetAll`,
   GetVideoByIdPath: `api/v1/Video`,
   UpdateVideoPath: `api/v1/Video`,
+  GetVideoByCourseIdPath: `api/v1/Video/GetAllVideosByCurso/`,
 };

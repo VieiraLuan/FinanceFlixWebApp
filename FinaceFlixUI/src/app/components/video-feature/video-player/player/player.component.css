@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  background: linear-gradient(90deg, #143489, #3a0a48);
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+.videobox{
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+}
+
+.videobox .videodata {
+ display: flex;
+  justify-content: start;
+  align-items: start;
+  color: white;
+}
+
+.videobox .player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

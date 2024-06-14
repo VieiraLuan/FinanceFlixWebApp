@@ -1,8 +1,7 @@
+import { Video } from './../../dtos/Video';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { CourseVideo } from 'src/app/dtos/CourseVideo';
-import { Video } from 'src/app/dtos/Video';
 import { VideoRequest } from 'src/app/dtos/VideoRequest';
 import { environment } from 'src/environments/environment';
 
@@ -23,7 +22,6 @@ export class VideoService {
     return window.localStorage.getItem('token') || '';
   }
 
-
   public retrieveVideos(): Observable<Video[]> {
     const retrieveVideosPath = this.baseUrl + environment.RetrieveVideosPath;
 
@@ -31,11 +29,10 @@ export class VideoService {
       .get<Video[]>(retrieveVideosPath, { headers: this.headers })
       .pipe(
         map((videos: Video[]) => {
-                return videos;
+          return videos;
         })
       );
   }
-
 
   public addVideo(video: VideoRequest): Observable<{
     id: string;
@@ -87,9 +84,20 @@ export class VideoService {
       );
   }
 
+  public getVideosByCourseId(courseid: string): Observable<Video[]> {
+
+    const url = this.baseUrl + environment.GetVideoByCourseIdPath + courseid;
+
+    return this.http.get<Video[]>(url, { headers: this.headers }).pipe(
+      map((videos: Video[]) => {
+        return videos;
+      })
+    );
+  }
 
   public addVideoToCourse(
-    VideoId:string,CursoIds:string[]
+    VideoId: string,
+    CursoIds: string[]
   ): Observable<{ videoId: string; courseId: string }> {
     const addVideoToCoursePath =
       this.baseUrl + environment.AddVideoToCoursePath;
@@ -97,17 +105,15 @@ export class VideoService {
     return this.http
       .post(
         addVideoToCoursePath,
-        { VideoId, CursoIds},
+        { VideoId, CursoIds },
         { headers: this.headers, observe: 'response' }
       )
       .pipe(
-        map(
-          (response: any) => {
-            const videoId = response.body?.videoId || '';
-            const courseId = response.body?.courseId || '';
-            return { videoId, courseId };
-          }
-        )
+        map((response: any) => {
+          const videoId = response.body?.videoId || '';
+          const courseId = response.body?.courseId || '';
+          return { videoId, courseId };
+        })
       );
   }
 
@@ -124,7 +130,6 @@ export class VideoService {
   }
 
   public updateVideo(video: Video): Observable<Video> {
-
     const updateVideoPath = this.baseUrl + environment.UpdateVideoPath;
 
     return this.http
@@ -135,5 +140,4 @@ export class VideoService {
         })
       );
   }
-
 }

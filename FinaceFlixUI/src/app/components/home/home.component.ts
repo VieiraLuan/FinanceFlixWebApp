@@ -1,11 +1,7 @@
 import { AlertService } from './../../services/alert/alert.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Category } from 'src/app/dtos/Category';
-import { CategoryRequest } from 'src/app/dtos/CategoryRequest';
-import { CategoryResponse } from 'src/app/dtos/CategoryResponse';
-import { Course } from 'src/app/dtos/Course';
 import { HomeList } from 'src/app/dtos/HomeList';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { CourseService } from 'src/app/services/course/course.service';
@@ -101,6 +97,6 @@ export class HomeComponent implements OnInit {
 
   protected redirectToVideoList(courseId: string) {
     console.log('Redirecting to video list'+ courseId);
-    this.router.navigate(['video/list']);
+    this.router.navigate(['video/list/'+courseId]);
   }
 }

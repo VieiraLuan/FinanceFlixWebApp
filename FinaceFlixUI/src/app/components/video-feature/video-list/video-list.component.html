@@ -4,18 +4,24 @@
   <div class="subtitle">
     <h2>Videos</h2>
   </div>
-  <div class="wrapper">
-    <div class="card">
-      <img src="https://fiapsaccount.blob.core.windows.net/financeflix-images/f0eb8f45-646e-43d5-978a-61922cfe9456.png"
-        alt="">
-      <div class="card-data">
-        <h2>Nome do Video</h2>
-        <h3>Descrição</h3>
-        <h4>Duração</h4>
-        <p>Lançamento</p>
+
+  <li *ngFor="let item of videoList">
+
+    <div class="wrapper">
+      <div class="card">
+        <img (click)="openVideo(item.id,item.nome)"
+          src="https://fiapsaccount.blob.core.windows.net/financeflix-images/7c731774-5f6e-4a96-906a-3068b3ea0dce.png"
+          alt="">
+        <div class="card-data">
+          <h2>{{item.nome}}</h2>
+          <h3>Descrição: {{item.descricao}}</h3>
+          <h4>{{item.duracaoSegundos}} Minutos</h4>
+
+        </div>
       </div>
     </div>
-  </div>
+
+  </li>
 
 </div>
 
