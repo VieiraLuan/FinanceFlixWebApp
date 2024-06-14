@@ -1,7 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Course } from 'src/app/dtos/Course';
-import { HomeList } from 'src/app/dtos/HomeList';
 import { VideoService } from 'src/app/services/video/video.service';
 import { Video } from 'src/app/dtos/Video';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -55,10 +53,4 @@ export class VideoListComponent implements OnInit {
   protected openVideo(videoId: string,videoname:string) {
     this.router.navigate(['video/list/player', videoId,videoname]);
   }
-
-  // id:string;
-  // nome: string;
-  // descricao: string;
-  // dono: string;
-  // curso: Course[];
 }

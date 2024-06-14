@@ -98,11 +98,6 @@ export class AddCategoryComponent implements OnInit {
           }
         },
       });
-
-      // this.alertService.showSuccessAlert(
-      //   phrases.categoryAddedSuccess,
-      //   phrases.categoryAdded
-      // );
     }
   }
 }

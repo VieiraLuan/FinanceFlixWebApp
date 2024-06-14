@@ -1,4 +1,3 @@
-import { UserResponse } from './../../dtos/UserResponse';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticateService } from '../../services/authenticate/authenticate.service';
 import { Component, OnInit } from '@angular/core';

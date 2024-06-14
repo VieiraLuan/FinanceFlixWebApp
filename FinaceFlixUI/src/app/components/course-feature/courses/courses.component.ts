@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/dtos/Course';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { CategoryService } from 'src/app/services/category/category.service';
 import { CourseService } from 'src/app/services/course/course.service';
 import { phrases } from 'src/app/shared/phrases/phrases';
 
@@ -92,8 +91,6 @@ export class CoursesComponent implements OnInit {
           this.alertService.closeAlert();
         }
       );
-
-
     }
   }
 
